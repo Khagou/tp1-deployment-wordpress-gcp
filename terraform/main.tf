@@ -80,7 +80,7 @@ resource "google_compute_instance" "wordpress_instance" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-os-cloud/ubuntu-2004-lts"
+      image = "debian-cloud/debian-11"
     }
   }
 
@@ -104,7 +104,7 @@ resource "google_compute_instance" "mariadb_instance" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-os-cloud/ubuntu-2004-lts"
+      image = "debian-cloud/debian-11"
     }
   }
 
