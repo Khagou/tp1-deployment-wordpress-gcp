@@ -43,8 +43,10 @@ cd ..
 if [ ! -d "ansible" ]; then
     git clone https://github.com/tp1-deployment-wordpress-gcp.git
     cd tp1-deployment-wordpress-gcp/ansible
+else
+    cd ansible
 fi
-ansible-playbook -i ansible/ playbook playbook.yml
+ansible-playbook playbook.yml
 
 # 10- Vérification que l'application fonctionne
 wordpress_ip=$(terraform output -raw wordpress_instance_ip)
