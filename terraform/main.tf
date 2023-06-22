@@ -43,8 +43,7 @@ resource "google_compute_firewall" "allow-ssh" {
     ports    = ["22"]
   }
 
-  source_tags = ["ansible"]
-  target_tags = ["ansible"]
+  source_ranges = ["0.0.0.0/0"]
 }
 
 resource "google_compute_firewall" "allow-http-https" {
