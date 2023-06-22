@@ -1,6 +1,6 @@
 plugin: gcp_compute
 zones: # populate inventory with instances in these regions
-  - europe-west1-b
+  - us-east1-b
 projects:
   - cursusm2i-maxence
 service_account_file: ./service_account.json
