@@ -107,6 +107,11 @@ resource "google_compute_instance" "mariadb-instance" {
   }
 }
 
+resource "google_project_service" "iam" {
+  project = "cursusm2i-maxence"
+  service = "iam.googleapis.com"
+}
+
 resource "google_service_account" "service_account" {
   account_id   = "terraform"
   display_name = "terraform"
@@ -136,11 +141,6 @@ resource "google_project_iam_binding" "project" {
   members = [
     "serviceAccount:${google_service_account.service_account.email}",
   ]
-}
-
-resource "google_project_service" "iam" {
-  project = "cursusm2i-maxence"
-  service = "iam.googleapis.com"
 }
 
 output "ip-wordpress-instance" {
