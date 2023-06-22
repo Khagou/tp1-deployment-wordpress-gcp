@@ -108,7 +108,7 @@ resource "google_compute_instance" "mariadb-instance" {
 }
 
 resource "google_project_service" "iam" {
-  project = "cursusm2i-maxence"
+  project = var.gcp_project
   service = "iam.googleapis.com"
 }
 
