@@ -1,7 +1,7 @@
 # playbook.yml
 
 - name: Install and configure WordPress on instance-1
-  hosts: wordpress
+  hosts: wordpress-instance
   gather_facts: false
   become: true
 
@@ -42,7 +42,7 @@
       become: true
 
 - name: Install and configure MariaDB on instance-2
-  hosts: mariadb
+  hosts: mariadb-instance
   gather_facts: false
   become: true
 
