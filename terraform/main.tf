@@ -111,14 +111,14 @@ resource "google_project_service" "cloud_resource_manager" {
   project = "cursusm2i-maxence"
   service = "cloudresourcemanager.googleapis.com"
 
-  disable_dependent_services = true
+  # disable_dependent_services = true
 }
 
 resource "google_project_service" "iam" {
   project = "cursusm2i-maxence"
   service = "iam.googleapis.com"
 
-  disable_dependent_services = true
+  # disable_dependent_services = true
 }
 
 resource "google_service_account" "service_account" {
