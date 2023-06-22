@@ -108,7 +108,7 @@ resource "google_compute_instance" "mariadb-instance" {
 }
 
 resource "google_project_service" "project" {
-  project = "your-project-id"
+  project = "cursusm2i-maxence"
   service = "iam.googleapis.com"
 
   disable_dependent_services = true
