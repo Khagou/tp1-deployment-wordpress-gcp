@@ -107,12 +107,12 @@ resource "google_compute_instance" "mariadb-instance" {
   }
 }
 
-resource "google_project_service" "iam" {
-  project = var.gcp_project
-  service = "iam.googleapis.com"
+# resource "google_project_service" "iam" {
+#   project = var.gcp_project
+#   service = "iam.googleapis.com"
 
-  disable_dependent_services = true
-}
+#   disable_dependent_services = true
+# }
 
 resource "google_service_account" "service_account" {
   account_id   = "terraform"

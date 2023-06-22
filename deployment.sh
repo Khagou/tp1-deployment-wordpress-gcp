@@ -25,6 +25,7 @@ if ! command -v ansible &> /dev/null; then
 fi
 
 gcloud services enable cloudresourcemanager.googleapis.com --project="cursusm2i-maxence"
+gcloud services enable iam.googleapis.com --project="cursusm2i-maxence"
 
 # 7- Vérification de la présence des fichiers Terraform et exécution de terraform init si nécessaire
 if [ ! -d "terraform" ]; then
