@@ -110,8 +110,6 @@ resource "google_compute_instance" "mariadb-instance" {
 resource "google_project_service" "iam" {
   project = "cursusm2i-maxence"
   service = "iam.googleapis.com"
-
-  disable_dependent_services = true
 }
 
 resource "google_service_account" "service_account" {
@@ -124,7 +122,7 @@ resource "google_service_account_key" "service_account" {
 }
 resource "local_file" "service_account" {
     content  = base64decode(google_service_account_key.service_account.private_key)
-    filename = "./service_account.json"
+    filename = "../ansible/service_account.json"
 }
 
 # data "google_client_openid_userinfo" "me" {
