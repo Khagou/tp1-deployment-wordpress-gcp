@@ -1,0 +1,70 @@
+# playbook.yml
+
+- name: Install and configure WordPress on instance-1
+  hosts: wordpress
+  gather_facts: false
+  become: true
+
+  tasks:
+    # Tâches pour wordpress
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+      become: true
+
+    - name: Install required packages for WordPress
+      apt:
+        name: "{{ item }}"
+        state: present
+      become: true
+      with_items:
+        - apache2
+        - php
+        - php-mysql
+        - libapache2-mod-php
+        - mysql-client
+
+    # ... autres tâches pour WordPress ...
+    - name: Configure WordPress to use MariaDB on mariadb
+      lineinfile:
+        path: /var/www/html/wp-config.php
+        regex: "define\\('DB_HOST', '[^']*'\\);"
+        line: "define('DB_HOST', 'ip-instance-2');"
+        state: present
+      become: true
+
+  handlers:
+    # Handlers pour instance-1 (WordPress)
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: restarted
+      become: true
+
+- name: Install and configure MariaDB on instance-2
+  hosts: mariadb
+  gather_facts: false
+  become: true
+
+  tasks:
+    # Tâches pour instance-2 (MariaDB)
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+      become: true
+
+    - name: Install MariaDB server
+      apt:
+        name: mariadb-server
+        state: present
+      become: true
+
+    # ... autres tâches pour MariaDB ...
+
+  handlers:
+    # Handlers pour instance-2 (MariaDB)
+    - name: Restart MariaDB
+      service:
+        name: mysql
+        state: restarted
+      become: true
