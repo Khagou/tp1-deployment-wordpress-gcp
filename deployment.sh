@@ -3,10 +3,10 @@
 # 1- Récupérer la zone du projet
 gcloud config set compute/region europe-west1
 gcloud config set compute/zone europe-west1-b
-ZONE=$(gcloud config get-value compute/zone)
+export ZONE=$(gcloud config get-value compute/zone)
 
 # 2- Créer une VM de déploiement
-gcloud compute instances create deployment-vm --zone=$ZONE --image-family=ubuntu-1804-lts --image-project=ubuntu-os-cloud --boot-disk-size=10GB --tags=ansible
+gcloud compute instances create deployment-vm --zone=$ZONE --machine-type=e2-medium  --tags=ansible
 
 # 3- Se connecter à l'instance en SSH
 gcloud compute ssh deployment-vm --zone=$ZONE
