@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 1- Récupérer la zone du projet
+# 1- Configuerer et récupérer la zone du projet
 gcloud config set compute/region europe-west1
 gcloud config set compute/zone europe-west1-b
 export ZONE=$(gcloud config get-value compute/zone)
@@ -9,7 +9,7 @@ export ZONE=$(gcloud config get-value compute/zone)
 gcloud compute instances create deployment-vm --zone=$ZONE --machine-type=e2-medium  --tags=ansible
 
 # 3- Se connecter à l'instance en SSH
-gcloud compute ssh deployment-vm --zone=$ZONE
+gcloud compute ssh deployment-vm --zone=$ZONE <<eof
 
 # 4- Vérifier si une clé SSH est présente sur la VM, sinon en créer une
 if [ ! -f ~/.ssh/id_rsa ]; then
@@ -65,17 +65,4 @@ if [[ -n $curl_result ]]; then
 else
     echo "L'application WordPress n'est pas fonctionnelle."
 fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+eof
