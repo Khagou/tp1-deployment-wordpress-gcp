@@ -5,12 +5,12 @@ variable "gcp_project" {
 }
 variable "gcp_zone" {
   type        = string
-  default     = "europe-west1-b"
+  default     = "us-east1-b"
   description = "The GCP zone to deploy the runner into."
 }
 
 variable "gcp_region" {
   type        = string
-  default     = "europe-west1"
+  default     = "us-east1"
   description = "The GCP region to deploy the runner into."
 }
