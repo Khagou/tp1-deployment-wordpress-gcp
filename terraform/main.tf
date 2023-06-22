@@ -61,7 +61,7 @@ resource "google_compute_firewall" "allow-http-https" {
 
 resource "google_compute_instance" "wordpress-instance" {
   name         = "wordpress-instance"
-  machine_type = "f1-micro"
+  machine_type = "e2-medium"
   zone         = var.gcp_zone
   tags         = ["wordpress", "ansible"]
 
@@ -85,7 +85,7 @@ resource "google_compute_instance" "wordpress-instance" {
 
 resource "google_compute_instance" "mariadb-instance" {
   name         = "mariadb-instance"
-  machine_type = "f1-micro"
+  machine_type = "e2-medium"
   zone         = var.gcp_zone
   tags         = ["mariadb", "ansible"]
 
