@@ -59,7 +59,7 @@ resource "google_compute_firewall" "allow-http-https" {
   source_ranges = ["0.0.0.0/0"]
 }
 
-resource "google_compute_instance" "wordpress_instance" {
+resource "google_compute_instance" "wordpress-instance" {
   name         = "wordpress-instance"
   machine_type = "f1-micro"
   zone         = var.gcp_zone
@@ -83,7 +83,7 @@ resource "google_compute_instance" "wordpress_instance" {
   }
 }
 
-resource "google_compute_instance" "mariadb_instance" {
+resource "google_compute_instance" "mariadb-instance" {
   name         = "mariadb-instance"
   machine_type = "f1-micro"
   zone         = var.gcp_zone
