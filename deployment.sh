@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # 1- Récupérer la zone du projet
+gcloud config set compute/region europe-west1
+gcloud config set compute/zone europe-west1-b
 ZONE=$(gcloud config get-value compute/zone)
 
 # 2- Créer une VM de déploiement
-gcloud compute instances create deployment-vm --zone=$ZONE --image-family=ubuntu-1804-lts --image-project=ubuntu-os-cloud --boot-disk-size=10GB
+gcloud compute instances create deployment-vm --zone=$ZONE --image-family=ubuntu-1804-lts --image-project=ubuntu-os-cloud --boot-disk-size=10GB --tags=ansible
 
 # 3- Se connecter à l'instance en SSH
 gcloud compute ssh deployment-vm --zone=$ZONE
@@ -36,8 +38,10 @@ fi
 # 7- Vérification de la présence des fichiers Terraform et exécution de terraform init si nécessaire
 if [ ! -d "terraform" ]; then
     git clone https://github.com/tp1-deployment-wordpress-gcp.git
+    cd tp1-deployment-wordpress-gcp/terraform
+else
+    cd terraform
 fi
-cd terraform
 terraform init
 
 # 8- Application de la création avec Terraform
@@ -45,6 +49,12 @@ terraform apply -auto-approve
 
 # 9- Utiliser la commande de déploiement Ansible pour appliquer le déploiement sur les machines
 cd ..
+if [ ! -d "ansible" ]; then
+    git clone https://github.com/tp1-deployment-wordpress-gcp.git
+    cd tp1-deployment-wordpress-gcp/ansible
+else
+    cd ansible
+fi
 ansible-playbook -i ansible/deploy.yml
 
 # 10- Vérification que l'application fonctionne
