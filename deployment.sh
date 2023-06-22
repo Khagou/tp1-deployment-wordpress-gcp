@@ -24,6 +24,8 @@ if ! command -v ansible &> /dev/null; then
     sudo apt install -y ansible
 fi
 
+gcloud services enable cloudresourcemanager.googleapis.com --project="cursusm2i-maxence"
+
 # 7- Vérification de la présence des fichiers Terraform et exécution de terraform init si nécessaire
 if [ ! -d "terraform" ]; then
     git clone https://github.com/tp1-deployment-wordpress-gcp.git
