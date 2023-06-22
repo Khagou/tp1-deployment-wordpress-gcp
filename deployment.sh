@@ -1,16 +1,5 @@
 #!/bin/bash
 
-# 1- Configuerer et récupérer la zone du projet
-gcloud config set compute/region europe-west1
-gcloud config set compute/zone europe-west1-b
-export ZONE=$(gcloud config get-value compute/zone)
-
-# 2- Créer une VM de déploiement
-gcloud compute instances create deployment-vm --zone=$ZONE --machine-type=e2-medium  --tags=ansible
-
-# 3- Se connecter à l'instance en SSH
-gcloud compute ssh deployment-vm --zone=$ZONE
-
 # 4- Vérifier si une clé SSH est présente sur la VM, sinon en créer une
 if [ ! -f ~/.ssh/id_rsa ]; then
     ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
