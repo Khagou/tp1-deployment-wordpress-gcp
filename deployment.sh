@@ -9,7 +9,7 @@ export ZONE=$(gcloud config get-value compute/zone)
 gcloud compute instances create deployment-vm --zone=$ZONE --machine-type=e2-medium  --tags=ansible
 
 # 3- Se connecter à l'instance en SSH
-gcloud compute ssh deployment-vm --zone=$ZONE <<eof
+gcloud compute ssh deployment-vm --zone=$ZONE
 
 # 4- Vérifier si une clé SSH est présente sur la VM, sinon en créer une
 if [ ! -f ~/.ssh/id_rsa ]; then
@@ -65,4 +65,17 @@ if [[ -n $curl_result ]]; then
 else
     echo "L'application WordPress n'est pas fonctionnelle."
 fi
-eof
+
+
+
+
+
+
+
+
+
+
+
+
+
+
