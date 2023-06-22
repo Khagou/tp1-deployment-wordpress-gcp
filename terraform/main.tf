@@ -107,14 +107,14 @@ resource "google_compute_instance" "mariadb-instance" {
   }
 }
 
-resource "google_project_service" "project" {
+resource "google_project_service" "cloud_resource_manager" {
   project = "cursusm2i-maxence"
   service = "crm.googleapis.com"
 
   disable_dependent_services = true
 }
 
-resource "google_project_service" "project" {
+resource "google_project_service" "iam" {
   project = "cursusm2i-maxence"
   service = "iam.googleapis.com"
 
