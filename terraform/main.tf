@@ -146,7 +146,7 @@ resource "google_os_login_ssh_public_key" "cache" {
 
   user =  data.google_client_openid_userinfo.me.email
 
-  key = file("~/.ssh/id_rsa.pub")
+  key = file("/home/max_verdom/.ssh/id_rsa.pub")
 
 
 }
