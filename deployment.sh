@@ -57,17 +57,3 @@ if [[ -n $curl_result ]]; then
 else
     echo "L'application WordPress n'est pas fonctionnelle."
 fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
