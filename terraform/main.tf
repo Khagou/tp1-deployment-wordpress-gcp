@@ -145,7 +145,7 @@ resource "google_project_iam_binding" "project" {
 }
 resource "google_project_iam_binding" "oslogin" {
   project = var.gcp_project
-  role    = "roles/compute"
+  role    = "roles/compute.osAdminLogin"
 
   members = [
     "serviceAccount:${google_service_account.service_account.email}",
