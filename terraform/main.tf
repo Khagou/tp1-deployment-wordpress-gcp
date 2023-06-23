@@ -126,14 +126,14 @@ resource "local_file" "service_account" {
     filename = "../ansible/service_account.json"
 }
 
-data "google_client_openid_userinfo" "me" {
-}
+# data "google_client_openid_userinfo" "me" {
+# }
 
-resource "google_os_login_ssh_public_key" "add_my_key" {
-  project = var.gcp_project
-  user =  data.google_client_openid_userinfo.me.email
-  key = file("~/.ssh/id_rsa.pub")
-}
+# resource "google_os_login_ssh_public_key" "add_my_key" {
+#   project = var.gcp_project
+#   user =  data.google_client_openid_userinfo.me.email
+#   key = file("~/.ssh/id_rsa.pub")
+# }
 
 resource "google_project_iam_binding" "project" {
   project = var.gcp_project
