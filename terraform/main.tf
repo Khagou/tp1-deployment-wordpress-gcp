@@ -4,7 +4,7 @@ provider "google" {
   zone        = var.gcp_zone 
 }
 
-resource "google_compute_n etwork" "my_network" {
+resource "google_compute_network" "my_network" {
   name                    = "my-network"
   auto_create_subnetworks = false
 }
