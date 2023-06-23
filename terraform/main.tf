@@ -2,6 +2,7 @@ provider "google" {
   project     = var.gcp_project
   region      = var.gcp_region
   zone        = var.gcp_zone 
+  scopes = [ "https://www.googleapis.com/auth/userinfo.email" ]
 }
 
 resource "google_compute_network" "my_network" {
@@ -35,6 +36,7 @@ resource "google_compute_firewall" "allow-internal-traffic" {
 }
 
 output "my-email" {  value = data.google_client_openid_userinfo.me.email}
+
 resource "google_compute_firewall" "allow-ssh" {
   name    = "allow-ssh"
   network = google_compute_network.my_network.self_link
