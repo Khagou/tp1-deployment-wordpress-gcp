@@ -143,6 +143,14 @@ resource "google_project_iam_binding" "project" {
     "serviceAccount:${google_service_account.service_account.email}",
   ]
 }
+resource "google_project_iam_binding" "oslogin" {
+  project = var.gcp_project
+  role    = "roles/compute"
+
+  members = [
+    "serviceAccount:${google_service_account.service_account.email}",
+  ]
+}
 
 output "ip-wordpress-instance" {
   value = google_compute_instance.wordpress-instance.network_interface.0.access_config.0.nat_ip
