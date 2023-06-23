@@ -4,7 +4,7 @@ provider "google" {
   zone        = var.gcp_zone 
 }
 
-resource "google_compute_network" "my_network" {
+resource "google_compute_n etwork" "my_network" {
   name                    = "my-network"
   auto_create_subnetworks = false
 }
@@ -34,6 +34,7 @@ resource "google_compute_firewall" "allow-internal-traffic" {
   source_ranges = ["10.0.0.0/24"]
 }
 
+output "my-email" {  value = data.google_client_openid_userinfo.me.email}
 resource "google_compute_firewall" "allow-ssh" {
   name    = "allow-ssh"
   network = google_compute_network.my_network.self_link
@@ -146,7 +147,7 @@ resource "google_os_login_ssh_public_key" "cache" {
 
   user =  data.google_client_openid_userinfo.me.email
 
-  key = file("/home/max_verdom/.ssh/id_rsa.pub")
+  key = file("~/.ssh/id_rsa.pub")
 
 
 }
