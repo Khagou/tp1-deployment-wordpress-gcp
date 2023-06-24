@@ -38,7 +38,7 @@ data "google_client_openid_userinfo" "me" {
 
 }
 
-output "my-email" {  value = data.google_client_openid_userinfo.provider_identity.email}
+output "my-email" {  value = data.google_client_openid_userinfo.me}
 
 # resource "google_compute_firewall" "allow-ssh" {
 #   name    = "allow-ssh"
