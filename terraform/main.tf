@@ -33,6 +33,9 @@ provider "google" {
 
 #   source_ranges = ["10.0.0.0/24"]
 # }
+data "google_client_openid_userinfo" "me" {
+
+}
 
 output "my-email" {  value = data.google_client_openid_userinfo.me.email}
 
@@ -137,9 +140,7 @@ output "my-email" {  value = data.google_client_openid_userinfo.me.email}
 #   key = file("~/.ssh/id_rsa.pub")
 # }
 
-data "google_client_openid_userinfo" "me" {
 
-}
 
 # resource "google_os_login_ssh_public_key" "cache" {
 
