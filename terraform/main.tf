@@ -1,16 +1,12 @@
-terraform {
-  required_providers {
-    google = {
-      source = "hashicorp/google"
-      version = "4.70.0"
-    }
-  }
-}
-
 provider "google" {
   project     = var.gcp_project
   region      = var.gcp_region
-  zone        = var.gcp_zone 
+  zone        = var.gcp_zone
+
+
+}
+
+data "google_client_openid_userinfo" "me" {
 }
 
 # resource "google_compute_network" "my_network" {
@@ -42,9 +38,6 @@ provider "google" {
 
 #   source_ranges = ["10.0.0.0/24"]
 # }
-data "google_client_openid_userinfo" "me" {
-
-}
 
 output "my-email" {  value = data.google_client_openid_userinfo.me}
 
@@ -140,8 +133,7 @@ output "my-email" {  value = data.google_client_openid_userinfo.me}
 #     filename = "../ansible/service_account.json"
 # }
 
-# data "google_client_openid_userinfo" "me" {
-# }
+
 
 # resource "google_os_login_ssh_public_key" "add_my_key" {
 #   # project = var.gcp_project
