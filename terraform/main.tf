@@ -170,10 +170,10 @@ output "my-email" {  value = data.google_client_openid_userinfo.me}
 #   ]
 # }
 
-output "ip-wordpress-instance" {
-  value = google_compute_instance.wordpress-instance.network_interface.0.access_config.0.nat_ip
-}
-output "ip-mariadb-instance" {
-  value = google_compute_instance.mariadb-instance.network_interface.0.access_config.0.nat_ip
-}
+# output "ip-wordpress-instance" {
+#   value = google_compute_instance.wordpress-instance.network_interface.0.access_config.0.nat_ip
+# }
+# output "ip-mariadb-instance" {
+#   value = google_compute_instance.mariadb-instance.network_interface.0.access_config.0.nat_ip
+# }
 
