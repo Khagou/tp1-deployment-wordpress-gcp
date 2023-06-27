@@ -4,6 +4,9 @@
   hosts: wordpress-instance
   gather_facts: false
   become: true
+  vars:
+    auth_kind: serviceaccount
+    service_account_file: ./service_account.js
 
   tasks:
     # Tâches pour wordpress
@@ -11,6 +14,8 @@
       apt:
         update_cache: yes
       become: true
+      service_account_file: "{{ service_account_file }}"
+      auth_kind: "{{ auth_kind }}"
 
     - name: Install required packages for WordPress
       apt:
