@@ -11,11 +11,11 @@
   tasks:
     # Tâches pour wordpress
     - name: Update apt cache
-      auth_kind: "{{ auth_kind }}"
-      service_account_file: "{{ service_account_file }}"
       apt:
         update_cache: yes
       become: true
+      auth_kind: "{{ auth_kind }}"
+      service_account_file: "{{ service_account_file }}"
 
     - name: Install required packages for WordPress
       apt:
