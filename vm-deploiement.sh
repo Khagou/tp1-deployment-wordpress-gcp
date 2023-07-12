@@ -11,6 +11,7 @@ gcloud compute instances create $INSTANCE_NAME \
   --project $PROJECT_ID \
   --zone $ZONE \
   --machine-type $MACHINE_TYPE
+  --scopes=https://www.googleapis.com/auth/cloud-platform
   --create-disk=auto-delete=yes,boot=yes,device-name=vm-deploiement,image=projects/debian-cloud/global/images/debian-11-bullseye-v20230629,mode=rw,size=10,type=projects/test-recup-email/zones/us-east1-b/diskTypes/pd-balanced
 
 # Générer les clés SSH
@@ -20,8 +21,6 @@ sudo gcloud compute config-ssh --project $PROJECT_ID
 gcloud compute instances describe $INSTANCE_NAME \
   --project $PROJECT_ID \
   --zone $ZONE
-gcloud compute firewall-rules create --network=ssh-vm-deploiement \
-default-allow-ssh --allow tcp:22
 
 # Se connecter en SSH à la VM
 gcloud compute ssh $INSTANCE_NAME \
