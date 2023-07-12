@@ -20,6 +20,8 @@ sudo gcloud compute config-ssh --project $PROJECT_ID
 gcloud compute instances describe $INSTANCE_NAME \
   --project $PROJECT_ID \
   --zone $ZONE
+gcloud compute firewall-rules create --network=ssh-vm-deploiement \
+default-allow-ssh --allow tcp:22
 
 # Se connecter en SSH à la VM
 gcloud compute ssh $INSTANCE_NAME \
