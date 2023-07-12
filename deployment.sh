@@ -1,5 +1,31 @@
 #!/bin/bash
 
+# Définir les variables
+PROJECT_ID="test-recup-email"
+ZONE="us-east1-b"
+INSTANCE_NAME="vm_deploiement"
+MACHINE_TYPE="e2-medium"
+IMAGE_FAMILY="Debian GNU/Linux 11"
+# IMAGE_PROJECT="projet_de_l'image"
+
+# Créer la VM
+gcloud compute instances create $INSTANCE_NAME \
+  --project $PROJECT_ID \
+  --zone $ZONE \
+  --machine-type $MACHINE_TYPE \
+  --image-family $IMAGE_FAMILY 
+#   --image-project $IMAGE_PROJECT
+
+# Afficher les détails de la VM créée
+gcloud compute instances describe $INSTANCE_NAME \
+  --project $PROJECT_ID \
+  --zone $ZONE
+
+# Se connecter en SSH à la VM
+gcloud compute ssh $INSTANCE_NAME \
+  --project $PROJECT_ID \
+  --zone $ZONE
+
 # 4- Vérifier si une clé SSH est présente sur la VM, sinon en créer une
 if [ ! -f ~/.ssh/id_rsa ]; then
     ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
