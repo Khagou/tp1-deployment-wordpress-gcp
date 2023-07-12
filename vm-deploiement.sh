@@ -14,7 +14,7 @@ gcloud compute instances create $INSTANCE_NAME \
   --create-disk=auto-delete=yes,boot=yes,device-name=vm-deploiement,image=projects/debian-cloud/global/images/debian-11-bullseye-v20230629,mode=rw,size=10,type=projects/test-recup-email/zones/us-east1-b/diskTypes/pd-balanced
 
 # Générer les clés SSH
-gcloud compute config-ssh
+sudo gcloud compute config-ssh
 
 # Afficher les détails de la VM créée
 gcloud compute instances describe $INSTANCE_NAME \
