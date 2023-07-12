@@ -3,18 +3,16 @@
 # Définir les variables
 PROJECT_ID="test-recup-email"
 ZONE="us-east1-b"
-INSTANCE_NAME="vm_deploiement"
+INSTANCE_NAME="vm-deploiement"
 MACHINE_TYPE="e2-medium"
-IMAGE_FAMILY="Debian GNU/Linux 11"
-# IMAGE_PROJECT="projet_de_l'image"
+
 
 # Créer la VM
 gcloud compute instances create $INSTANCE_NAME \
   --project $PROJECT_ID \
   --zone $ZONE \
-  --machine-type $MACHINE_TYPE \
-  --image-family $IMAGE_FAMILY 
-#   --image-project $IMAGE_PROJECT
+  --machine-type $MACHINE_TYPE
+  --create-disk=auto-delete=yes,boot=yes,device-name=vm-deploiement,image=projects/debian-cloud/global/images/debian-11-bullseye-v20230629,mode=rw,size=10,type=projects/test-recup-email/zones/us-east1-b/diskTypes/pd-balanced
 
 # Afficher les détails de la VM créée
 gcloud compute instances describe $INSTANCE_NAME \
