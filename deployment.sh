@@ -6,6 +6,8 @@ ZONE="us-east1-b"
 INSTANCE_NAME="vm-deploiement"
 MACHINE_TYPE="e2-medium"
 
+# Générer les clés SSH
+gcloud compute config-ssh
 
 # Créer la VM
 gcloud compute instances create $INSTANCE_NAME \
