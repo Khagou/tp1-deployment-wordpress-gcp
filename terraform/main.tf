@@ -2,6 +2,7 @@ provider "google" {
   project     = var.gcp_project
   region      = var.gcp_region
   zone        = var.gcp_zone
+  scopes      = [ "https://www.googleapis.com/auth/cloud-platform" ]
 }
 
 # data "google_client_openid_userinfo" "me" {
