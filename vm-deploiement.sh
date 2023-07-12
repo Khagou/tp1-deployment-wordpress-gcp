@@ -30,7 +30,7 @@ gcloud compute ssh $INSTANCE_NAME \
 gcloud compute ssh $INSTANCE_NAME \
   --project $PROJECT_ID \
   --zone $ZONE \
-  --command "if [ ! -d "tp1-deployment-wordpress-gcp" ]; then git clone https://github.com/tp1-deployment-wordpress-gcp.git
+  --command "if [ ! -d "tp1-deployment-wordpress-gcp" ]; then git clone https://github.com/Khagou/tp1-deployment-wordpress-gcp.git
     cd tp1-deployment-wordpress-gcp
     else
         cd tp1-deployment-wordpress-gcp

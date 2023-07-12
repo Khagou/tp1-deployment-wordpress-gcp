@@ -29,7 +29,7 @@ gcloud services enable iam.googleapis.com --project="test-recup-email"
 
 # 7- Vérification de la présence des fichiers Terraform et exécution de terraform init si nécessaire
 if [ ! -d "terraform" ]; then
-    git clone https://github.com/tp1-deployment-wordpress-gcp.git
+    git clone https://github.com/Khagou/tp1-deployment-wordpress-gcp.git
     cd tp1-deployment-wordpress-gcp/terraform
 else
     cd terraform
