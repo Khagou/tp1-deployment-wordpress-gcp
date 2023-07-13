@@ -4,12 +4,12 @@
   hosts: wordpress-instance
   gather_facts: false
   become: true
+  auth_kind: serviceaccount
 
   tasks:
     # Tâches pour wordpress
     - name: Update apt cache
       apt:
-        auth_kind: serviceaccount
         update_cache: yes
       become: true
 
