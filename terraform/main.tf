@@ -62,7 +62,6 @@ resource "google_compute_firewall" "allow-http-https" {
   source_ranges = ["0.0.0.0/0"]
 }
 
-
 resource "google_project_service" "iam" {
   project = var.gcp_project
   service = "iam.googleapis.com"
@@ -79,14 +78,6 @@ resource "google_service_account_key" "service_account" {
 resource "local_file" "service_account" {
     content  = base64decode(google_service_account_key.service_account.private_key)
     filename = "../ansible/service_account.json"
-}
-
-
-
-resource "google_os_login_ssh_public_key" "add_sa_key" {
-  # project = var.gcp_project
-  user =   google_service_account.service_account.email
-  key = file("../ansible/service_account.json")
 }
 
 resource "google_project_iam_binding" "project" {
