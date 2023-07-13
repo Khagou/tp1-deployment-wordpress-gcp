@@ -8,8 +8,8 @@
   tasks:
     # Tâches pour wordpress
     - name: Update apt cache
-      auth_kind: serviceaccount
       apt:
+        auth_kind: serviceaccount
         update_cache: yes
       become: true
 
