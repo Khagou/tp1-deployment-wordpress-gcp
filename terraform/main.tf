@@ -38,8 +38,6 @@ resource "google_compute_firewall" "allow-internal-traffic" {
   source_ranges = ["10.0.0.0/24"]
 }
 
-# output "my-email" {  value = data.google_client_openid_userinfo.me}
-
 resource "google_compute_firewall" "allow-ssh" {
   name    = "allow-ssh"
   network = google_compute_network.my_network.self_link
@@ -85,22 +83,11 @@ resource "local_file" "service_account" {
 
 
 
-# resource "google_os_login_ssh_public_key" "add_sa_key" {
-#   # project = var.gcp_project
-#   user =   google_service_account.service_account.email
-#   key = file("../ansible/service_account.json")
-# }
-
-
-
-# resource "google_os_login_ssh_public_key" "cache" {
-
-#   user =  data.google_client_openid_userinfo.me.email
-
-#   key = file("~/.ssh/id_rsa.pub")
-
-
-# }
+resource "google_os_login_ssh_public_key" "add_sa_key" {
+  # project = var.gcp_project
+  user =   google_service_account.service_account.email
+  key = file("../ansible/service_account.json")
+}
 
 resource "google_project_iam_binding" "project" {
   project = var.gcp_project
