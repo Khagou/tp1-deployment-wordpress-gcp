@@ -8,7 +8,7 @@
   tasks:
     # Tâches pour wordpress
     - name: Update apt cache
-      auth_kind: "{{gcp_cred_kind}}"
+      auth_kind: serviceaccount
       apt:
         update_cache: yes
       become: true
