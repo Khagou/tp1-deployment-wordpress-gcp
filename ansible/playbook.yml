@@ -7,10 +7,8 @@
 
   tasks:
     # Tâches pour wordpress
-    - name: Authentification avec le compte de service
-      gcp_compute_auth:
-        service_account_file: ./service_account.json
     - name: Update apt cache
+      auth_kind: "{{gcp_cred_kind}}"
       apt:
         update_cache: yes
       become: true
