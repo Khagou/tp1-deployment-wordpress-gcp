@@ -131,8 +131,7 @@ resource "google_compute_instance" "wordpress-instance" {
     enable-oslogin = "TRUE"
   }
   service_account {
-    email  = "terraform@test-recup-email.iam.gserviceaccount.com"
-    credentials_files = "../ansible/service_account.json"
+    email  = google_service_account.service_account.email
     scopes = ["cloud-platform"]
   }
 
@@ -160,8 +159,7 @@ resource "google_compute_instance" "mariadb-instance" {
     enable-oslogin = "TRUE"
   }
   service_account {
-    email  = "terraform@test-recup-email.iam.gserviceaccount.com"
-    credentials_files = "../ansible/service_account.json"
+    email  = google_service_account.service_account.email
     scopes = ["cloud-platform"]
   }
 
