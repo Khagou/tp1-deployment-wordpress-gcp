@@ -36,4 +36,5 @@ gcloud compute ssh $INSTANCE_NAME \
     else
         cd tp1-deployment-wordpress-gcp
     fi
+    gcloud auth application-default login
     sh deployment.sh"
