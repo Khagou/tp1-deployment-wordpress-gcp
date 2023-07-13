@@ -7,6 +7,9 @@
 
   tasks:
     # Tâches pour wordpress
+    - name: Authentification avec le compte de service
+      gcp_compute_auth:
+        service_account_file: ./service_account.json
     - name: Update apt cache
       apt:
         update_cache: yes
@@ -47,6 +50,9 @@
   become: true
 
   tasks:
+    - name: Authentification avec le compte de service
+      gcp_compute_auth:
+        service_account_file: ./service_account.json
     # Tâches pour instance-2 (MariaDB)
     - name: Update apt cache
       apt:
