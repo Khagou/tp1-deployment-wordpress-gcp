@@ -1,5 +1,4 @@
 provider "google" {
-  credentials = file("../ansible/service_account.json")
   project     = var.gcp_project
   region      = var.gcp_region
   zone        = var.gcp_zone
