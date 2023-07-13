@@ -131,6 +131,7 @@ resource "google_compute_instance" "wordpress-instance" {
   }
   service_account {
     email  = "terraform@test-recup-email.iam.gserviceaccount.com"
+    credentials_files = "../ansible/service_account.json"
     scopes = ["cloud-platform"]
   }
 
@@ -159,6 +160,7 @@ resource "google_compute_instance" "mariadb-instance" {
   }
   service_account {
     email  = "terraform@test-recup-email.iam.gserviceaccount.com"
+    credentials_files = "../ansible/service_account.json"
     scopes = ["cloud-platform"]
   }
 
