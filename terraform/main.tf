@@ -64,61 +64,6 @@ resource "google_compute_firewall" "allow-http-https" {
   source_ranges = ["0.0.0.0/0"]
 }
 
-resource "google_compute_instance" "wordpress-instance" {
-  name         = "wordpress-instance"
-  machine_type = "e2-medium"
-  zone         = var.gcp_zone
-  tags         = ["wordpress", "ansible"]
-
-  metadata = {
-    enable-oslogin = "TRUE"
-  }
-  service_account {
-    email  = "terraform@test-recup-email.iam.gserviceaccount.com"
-    scopes = ["cloud-platform"]
-  }
-
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-11"
-    }
-  }
-
-  network_interface {
-    subnetwork = google_compute_subnetwork.my_subnetwork.self_link
-    access_config {
-      // Autoriser l'accès par une adresse IP externe
-    }
-  }
-}
-
-resource "google_compute_instance" "mariadb-instance" {
-  name         = "mariadb-instance"
-  machine_type = "e2-medium"
-  zone         = var.gcp_zone
-  tags         = ["mariadb", "ansible"]
-
-  metadata = {
-    enable-oslogin = "TRUE"
-  }
-  service_account {
-    email  = "terraform@test-recup-email.iam.gserviceaccount.com"
-    scopes = ["cloud-platform"]
-  }
-
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-11"
-    }
-  }
-
-  network_interface {
-    subnetwork = google_compute_subnetwork.my_subnetwork.self_link
-    access_config {
-      // Autoriser l'accès par une adresse IP externe
-    }
-  }
-}
 
 resource "google_project_service" "iam" {
   project = var.gcp_project
@@ -173,6 +118,62 @@ resource "google_project_iam_binding" "oslogin" {
   members = [
     "serviceAccount:${google_service_account.service_account.email}",
   ]
+}
+
+resource "google_compute_instance" "wordpress-instance" {
+  name         = "wordpress-instance"
+  machine_type = "e2-medium"
+  zone         = var.gcp_zone
+  tags         = ["wordpress", "ansible"]
+
+  metadata = {
+    enable-oslogin = "TRUE"
+  }
+  service_account {
+    email  = "terraform@test-recup-email.iam.gserviceaccount.com"
+    scopes = ["cloud-platform"]
+  }
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-11"
+    }
+  }
+
+  network_interface {
+    subnetwork = google_compute_subnetwork.my_subnetwork.self_link
+    access_config {
+      // Autoriser l'accès par une adresse IP externe
+    }
+  }
+}
+
+resource "google_compute_instance" "mariadb-instance" {
+  name         = "mariadb-instance"
+  machine_type = "e2-medium"
+  zone         = var.gcp_zone
+  tags         = ["mariadb", "ansible"]
+
+  metadata = {
+    enable-oslogin = "TRUE"
+  }
+  service_account {
+    email  = "terraform@test-recup-email.iam.gserviceaccount.com"
+    scopes = ["cloud-platform"]
+  }
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-11"
+    }
+  }
+
+  network_interface {
+    subnetwork = google_compute_subnetwork.my_subnetwork.self_link
+    access_config {
+      // Autoriser l'accès par une adresse IP externe
+    }
+  }
 }
 
 output "ip-wordpress-instance" {
