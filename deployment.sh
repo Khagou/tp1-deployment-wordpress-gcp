@@ -24,7 +24,6 @@ if ! command -v ansible &> /dev/null; then
     sudo apt install -y ansible
 fi
 
-gcloud auth application-default login
 gcloud services enable cloudresourcemanager.googleapis.com --project="test-recup-email"
 gcloud services enable iam.googleapis.com --project="test-recup-email"
 # 7- Vérification de la présence des fichiers Terraform et exécution de terraform init si nécessaire

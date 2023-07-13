@@ -73,6 +73,10 @@ resource "google_compute_instance" "wordpress-instance" {
   metadata = {
     enable-oslogin = "TRUE"
   }
+  service_account {
+    email  = "terraform@test-recup-email.iam.gserviceaccount.com"
+    scopes = ["cloud-platform"]
+  }
 
   boot_disk {
     initialize_params {
@@ -96,6 +100,10 @@ resource "google_compute_instance" "mariadb-instance" {
 
   metadata = {
     enable-oslogin = "TRUE"
+  }
+  service_account {
+    email  = "terraform@test-recup-email.iam.gserviceaccount.com"
+    scopes = ["cloud-platform"]
   }
 
   boot_disk {
