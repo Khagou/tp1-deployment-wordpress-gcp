@@ -8,8 +8,8 @@
   tasks:
     # Tâches pour wordpress
     - name: Update apt cache
-      auth_kind: serviceaccount
-      service_account_file: ./service_account.json
+      # auth_kind: serviceaccount
+      # service_account_file: ./service_account.json
       apt:
         update_cache: yes
       become: true
