@@ -5,6 +5,10 @@
   gather_facts: false
   become: true
 
+  vars:
+    auth_kind: serviceaccount
+    service_account_file: ./service_account.json
+
   tasks:
     # Tâches pour wordpress
     - name: Update apt cache
@@ -13,7 +17,9 @@
       apt:
         update_cache: yes
       become: true
-
+      environment:
+        GOOGLE_AUTH_KIND: "{{ auth_kind }}"
+        GOOGLE_APPLICATION_CREDENTIALS: "{{ service_account_file }}"
     - name: Install required packages for WordPress
       apt:
         name: "{{ item }}"
