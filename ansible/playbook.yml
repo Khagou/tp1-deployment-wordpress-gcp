@@ -11,16 +11,15 @@
 
   tasks:
     # Tâches pour wordpress
-    gcp_compute_auth:
-      - name: Update apt cache
+    - name: Update apt cache
+      gcp_compute_auth:
         # auth_kind: serviceaccount
         # service_account_file: ./service_account.json
+        auth_kind: serviceaccount
+        service_account_file: ./service_account.json
         apt:
           update_cache: yes
         become: true
-        environment:
-          GOOGLE_AUTH_KIND: "{{ auth_kind }}"
-          GOOGLE_APPLICATION_CREDENTIALS: "{{ service_account_file }}"
     - name: Install required packages for WordPress
       apt:
         name: "{{ item }}"
