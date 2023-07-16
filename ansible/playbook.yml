@@ -5,21 +5,12 @@
   gather_facts: false
   become: true
 
-  vars:
-    auth_kind: serviceaccount
-    service_account_file: ./service_account.json
-
   tasks:
     # Tâches pour wordpress
     - name: Update apt cache
-      gcp_compute_auth:
-        # auth_kind: serviceaccount
-        # service_account_file: ./service_account.json
-        auth_kind: serviceaccount
-        service_account_file: ./service_account.json
-        apt:
-          update_cache: yes
-        become: true
+      apt:
+        update_cache: yes
+      become: true
     - name: Install required packages for WordPress
       apt:
         name: "{{ item }}"
