@@ -98,6 +98,15 @@ resource "google_project_iam_binding" "oslogin" {
   ]
 }
 
+resource "google_project_iam_binding" "instanceAdmin" {
+  project = var.gcp_project
+  role    = "roles/compute.instanceAdmin.v1"
+
+  members = [
+    "serviceAccount:${google_service_account.service_account.email}",
+  ]
+}
+
 resource "google_compute_instance" "wordpress-instance" {
   name         = "wordpress-instance"
   machine_type = "e2-medium"
