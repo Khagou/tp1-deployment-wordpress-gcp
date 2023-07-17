@@ -9,6 +9,9 @@
     # Tâches pour wordpress
     - name: Update apt cache
       apt:
+        auth_kind: serviceaccount
+        service_account_file: ./service_account.json
+        scopes: https://www.googleapis.com/auth/compute
         update_cache: yes
       become: true
     - name: Install required packages for WordPress
@@ -49,9 +52,6 @@
     # Tâches pour instance-2 (MariaDB)
     - name: Update apt cache
       apt:
-        auth_kind: serviceaccount
-        service_account_file: ./service_account.json
-        scopes: https://www.googleapis.com/auth/compute
         update_cache: yes
       become: true
 
