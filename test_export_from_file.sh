@@ -5,5 +5,11 @@ if [ ! -f ~/.ssh/id_rsa ]; then
     ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 fi
 
-source ~/.ssh/id_rsa.pub
-export $(cut -d= -f1 id_rsa.pub)
+# Lire le contenu du fichier dans une variable
+contenu=$(cat fichier.txt)
+
+# Exporter la variable d'environnement
+export VARIABLE_CONTENU="$contenu"
+
+# Afficher le contenu exporté
+echo "Contenu exporté : $VARIABLE_CONTENU"
