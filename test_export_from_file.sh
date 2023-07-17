@@ -6,7 +6,7 @@ if [ ! -f ~/.ssh/id_rsa ]; then
 fi
 
 # Lire le contenu du fichier dans une variable
-contenu=$(cat ~/.ssh/id_rsa)
+contenu=$(cat ~/.ssh/id_rsa.pub)
 
 # Exporter la variable d'environnement
 export VARIABLE_CONTENU="$contenu"
