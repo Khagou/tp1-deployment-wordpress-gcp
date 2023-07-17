@@ -12,4 +12,4 @@ contenu=$(cat ~/.ssh/id_rsa.pub)
 export VARIABLE_CONTENU="$contenu"
 
 # Afficher le contenu exporté
-echo "Contenu exporté : $VARIABLE_CONTENU"
+echo "$USER:$VARIABLE_CONTENU" > ssh_keys
