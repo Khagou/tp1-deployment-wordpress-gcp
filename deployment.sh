@@ -50,7 +50,7 @@ export GCP_AUTH_KIND=serviceaccount
 export GCP_SERVICE_ACCOUNT_EMAIL=terraform@test-recup-email.iam.gserviceaccount.com
 export GCP_SERVICE_ACCOUNT_FILE=./service_account.json
 export GCP_SCOPES=https://www.googleapis.com/auth/compute
-ansible-playbook playbook.yml
+ansible-playbook playbook.yml -i ./gcp_compute.yml
 
 # 10- Vérification que l'application fonctionne
 wordpress_ip=$(terraform output -raw wordpress_instance_ip)
