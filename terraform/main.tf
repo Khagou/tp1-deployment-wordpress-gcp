@@ -114,7 +114,7 @@ resource "google_compute_instance" "wordpress-instance" {
   tags         = ["wordpress", "ansible"]
 
   metadata = {
-    enable-oslogin = "TRUE"
+    # enable-oslogin = "TRUE"
   }
   service_account {
     email  = google_service_account.service_account.email
@@ -142,7 +142,7 @@ resource "google_compute_instance" "mariadb-instance" {
   tags         = ["mariadb", "ansible"]
 
   metadata = {
-    enable-oslogin = "TRUE"
+    # enable-oslogin = "TRUE"
   }
   service_account {
     email  = google_service_account.service_account.email
