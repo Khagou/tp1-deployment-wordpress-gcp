@@ -1,5 +1,5 @@
 #!/bin/bash
-export USER=khagukhagu2
+export USER=test
 # 4- Vérifier si une clé SSH est présente sur la VM, sinon en créer une
 if [ ! -f ~/.ssh/id_rsa ]; then
     ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
