@@ -27,6 +27,7 @@ if ! command -v ansible &> /dev/null; then
     sudo apt install -y ansible
 fi
 
+gcloud services enable compute.googleapis.com --project="tp1-wordpress-mariadb"
 gcloud services enable cloudresourcemanager.googleapis.com --project="tp1-wordpress-mariadb"
 gcloud services enable iam.googleapis.com --project="tp1-wordpress-mariadb"
 # 7- Vérification de la présence des fichiers Terraform et exécution de terraform init si nécessaire
