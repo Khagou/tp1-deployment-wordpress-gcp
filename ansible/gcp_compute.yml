@@ -2,7 +2,7 @@ plugin: gcp_compute
 zones: # populate inventory with instances in these regions
   - us-east1-b
 projects:
-  - test-recup-email
+  - tp1-wordpress-mariadb
 service_account_file: ./service_account.json
 auth_kind: serviceaccount
 keyed_groups:
