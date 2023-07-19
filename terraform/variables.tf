@@ -1,6 +1,6 @@
 variable "gcp_project" {
   type        = string
-  default     = "tp1-wordpress-mariadb"
+  default     = "test-recup-email"
   description = "The GCP project to deploy the runner into."
 }
 variable "gcp_zone" {
