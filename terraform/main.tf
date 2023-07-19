@@ -143,6 +143,7 @@ resource "google_compute_instance" "mariadb-instance" {
 
   metadata = {
     # enable-oslogin = "TRUE"
+    enable-windows-ssh = "TRUE"
   }
   service_account {
     email  = google_service_account.service_account.email
