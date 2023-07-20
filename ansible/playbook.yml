@@ -129,7 +129,7 @@
         login_password: "{{ mariadb_root_password }}"
 
     - name: Configure WordPress with MariaDB details
-      hosts: wordpress_instance_ip
+      hosts: wordpress-instance
       tasks:
         - name: Install MySQL client package on WordPress instance (required for wp-cli)
           apt:
@@ -151,7 +151,7 @@
             state: absent
 
     - name: Restart Apache to apply changes
-      hosts: wordpress_instance_ip
+      hosts: wordpress-instance
       tasks:
         - name: Restart Apache
           service:
