@@ -88,7 +88,9 @@
       become: true
       with_items:
         - mariadb-server
-        - MySQL-python
+        - python3-pip
+        - python3-setuptools
+        - python3-pymysql
 
     - name: Secure MariaDB installation (optional, you can remove this task if you don't need it)
       mysql_user:
