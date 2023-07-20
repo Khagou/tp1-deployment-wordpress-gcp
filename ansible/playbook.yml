@@ -8,19 +8,6 @@
     # Version de WordPress à installer (vous pouvez changer cela en fonction de votre préférence)
     wordpress_version: "5.8"
 
-    # Nom d'utilisateur administrateur de WordPress
-    wordpress_admin_user: "admin"
-    # Mot de passe administrateur de WordPress
-    wordpress_admin_password: "admin_password"
-    # Mot de passe root de MariaDB
-    mariadb_root_password: "mariadbpassword"
-    # Nom de la base de données WordPress
-    wordpress_db_name: "wordpressdb"
-    # Nom d'utilisateur de la base de données WordPress
-    wordpress_db_user: "wordpressuser"
-    # Mot de passe de la base de données WordPress
-    wordpress_db_password: "wordpresspassword"
-
   tasks:
     # Tâches pour wordpress
     - name: Update apt cache
@@ -38,7 +25,7 @@
         - php
         - php-mysql
         - libapache2-mod-php
-        - default-mysql-client
+        - mariadb-client
 
     - name: Download and extract WordPress
       get_url:
@@ -141,11 +128,3 @@
         state: present
         login_user: root
         login_password: "{{ mariadb_root_password }}"
-
-- name: Restart Apache to apply changes
-  hosts: wordpress-instance
-  tasks:
-    - name: Restart Apache
-      service:
-        name: apache2
-        state: restarted
