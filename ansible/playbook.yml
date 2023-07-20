@@ -63,7 +63,7 @@
 
     - name: Copy WordPress configuration file
       template:
-        src: wp-config.php
+        src: wp_config.php
         dest: /var/www/html/wordpress/wp-config.php
 
   handlers:
