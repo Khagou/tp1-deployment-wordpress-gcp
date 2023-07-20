@@ -79,7 +79,7 @@
     # Mot de passe administrateur de WordPress
     wordpress_admin_password: "admin_password"
     # Mot de passe root de MariaDB
-    mariadb_root_password: "mariadbpassword"
+    mariadb_root_password: "mariadb_root_password"
     # Nom de la base de données WordPress
     wordpress_db_name: "wordpressdb"
     # Nom d'utilisateur de la base de données WordPress
@@ -108,7 +108,7 @@
     - name: Secure MariaDB installation (optional, you can remove this task if you don't need it)
       mysql_user:
         name: root
-        password: "mariadbpassword"
+        password: "{{ mariadb_root_password }}"
         login_unix_socket: /var/run/mysqld/mysqld.sock
         host_all: yes
 
