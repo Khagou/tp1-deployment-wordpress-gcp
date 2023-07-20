@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Remplacez "VOTRE_PROJET" par l'ID de votre projet GCP
-PROJET="VOTRE_PROJET"
+PROJET="tp1-wordpress-mariadb"
 
 # Récupère la liste des noms et des zones d'instance à l'aide de gcloud
 instances_info=$(gcloud compute instances list --project $PROJET --format="csv(NAME,ZONE)")
