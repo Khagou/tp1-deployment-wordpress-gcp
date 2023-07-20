@@ -12,7 +12,7 @@
         update_cache: yes
       become: true
     - name: Install required packages for WordPress
-      apt:
+      apt-get:
         name: "{{ item }}"
         state: present
       become: true
