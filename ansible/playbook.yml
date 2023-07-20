@@ -83,9 +83,12 @@
 
     - name: Install MariaDB server
       apt:
-        name: mariadb-server
+        name: "{{ item }}"
         state: present
       become: true
+      with_items:
+        - mariadb-server
+        - MySQL-python
 
     - name: Secure MariaDB installation (optional, you can remove this task if you don't need it)
       mysql_user:
