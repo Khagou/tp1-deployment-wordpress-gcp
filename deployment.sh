@@ -33,11 +33,12 @@ terraform init
 
 # 8- Application de la création avec Terraform
 terraform apply -auto-approve
+
 cd ..
 
 sh test_export_from_file.sh
 
-sh recolte-instance-name.sh
+sh recolte-instance-names.sh
 
 # 9- Utiliser la commande de déploiement Ansible pour appliquer le déploiement sur les machines
 if [ ! -d "ansible" ]; then
