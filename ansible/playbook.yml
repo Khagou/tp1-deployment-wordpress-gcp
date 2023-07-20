@@ -79,7 +79,7 @@
     # Mot de passe administrateur de WordPress
     wordpress_admin_password: "admin_password"
     # Mot de passe root de MariaDB
-    mariadb_root_password: "mariadb_root_password"
+    mariadb_root_password: "mariadbpassword"
     # Nom de la base de données WordPress
     wordpress_db_name: "wordpressdb"
     # Nom d'utilisateur de la base de données WordPress
