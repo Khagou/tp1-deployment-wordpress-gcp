@@ -1,12 +1,8 @@
 #!/bin/bash
-export USER=khagukhagu2
-# 4- Vérifier si une clé SSH est présente sur la VM, sinon en créer une
-if [ ! -f ~/.ssh/id_rsa ]; then
-    ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
-fi
+sh test_export_from_file.sh
 
-echo "${USER}:" > ssh_keys
-cat ~/.ssh/id_rsa.pub >> ssh_keys
+sh recolte-instance-name.sh
+
 
 # 5- Vérifier et installer Terraform si nécessaire
 if ! command -v terraform &> /dev/null; then

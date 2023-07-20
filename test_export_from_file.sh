@@ -1,6 +1,5 @@
 #!/bin/bash
-export USER=test
-export EMAIL=khagukhagu2_gmail_com
+export EMAIL=khagukhagu2_gmail_com #Remplacer par votre Email
 # 4- Vérifier si une clé SSH est présente sur la VM, sinon en créer une
 if [ ! -f ~/.ssh/id_rsa ]; then
     ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa -C "$EMAIL"
