@@ -38,7 +38,7 @@ cd ..
 
 sh test_export_from_file.sh
 
-sh recolte-instance-names.sh
+sh recolte-instances-names.sh
 
 # 9- Utiliser la commande de déploiement Ansible pour appliquer le déploiement sur les machines
 if [ ! -d "ansible" ]; then
