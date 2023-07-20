@@ -51,10 +51,11 @@
         dest: /var/www/html
         remote_src: yes
         creates: /var/www/html/wordpress
-    - name: Copy WordPress configuration file
-      template:
-        src: wp-config.php.j2
-        dest: /var/www/html/wordpress/wp-config.php
+
+    # - name: Copy WordPress configuration file
+    #   template:
+    #     src: wp-config.php.j2
+    #     dest: /var/www/html/wordpress/wp-config.php
 
     - name: Set ownership and permissions for WordPress
       file:
