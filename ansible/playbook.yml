@@ -128,32 +128,32 @@
         login_user: root
         login_password: "{{ mariadb_root_password }}"
 
-    - name: Configure WordPress with MariaDB details
-      hosts: wordpress-instance
-      tasks:
-        - name: Install MySQL client package on WordPress instance (required for wp-cli)
-          apt:
-            name: mysql-client
-            state: present
+- name: Configure WordPress with MariaDB details
+  hosts: wordpress-instance
+  tasks:
+    - name: Install MySQL client package on WordPress instance (required for wp-cli)
+      apt:
+        name: mysql-client
+        state: present
 
-        - name: Install WordPress CLI for command-line management
-          shell: curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x wp-cli.phar && sudo mv wp-cli.phar /usr/local/bin/wp
+    - name: Install WordPress CLI for command-line management
+      shell: curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x wp-cli.phar && sudo mv wp-cli.phar /usr/local/bin/wp
 
-        - name: Configure WordPress to use MariaDB
-          shell: wp core config --path=/var/www/html/wordpress --dbname={{ wordpress_db_name }} --dbuser={{ wordpress_db_user }} --dbpass={{ wordpress_db_password }} --dbhost={{ mariadb_instance_ip }} --dbprefix=wp_ --skip-check
+    - name: Configure WordPress to use MariaDB
+      shell: wp core config --path=/var/www/html/wordpress --dbname={{ wordpress_db_name }} --dbuser={{ wordpress_db_user }} --dbpass={{ wordpress_db_password }} --dbhost={{ mariadb_instance_ip }} --dbprefix=wp_ --skip-check
 
-        - name: Install and configure WordPress
-          shell: wp core install --path=/var/www/html/wordpress --url={{ wordpress_site_url }} --title="{{ wordpress_site_title }}" --admin_user={{ wordpress_admin_user }} --admin_password="{{ wordpress_admin_password }}" --admin_email={{ wordpress_admin_email }} --skip-email
+    - name: Install and configure WordPress
+      shell: wp core install --path=/var/www/html/wordpress --url={{ wordpress_site_url }} --title="{{ wordpress_site_title }}" --admin_user={{ wordpress_admin_user }} --admin_password="{{ wordpress_admin_password }}" --admin_email={{ wordpress_admin_email }} --skip-email
 
-        - name: Remove WordPress installation file
-          file:
-            path: /var/www/html/wordpress/wp-admin/install.php
-            state: absent
+    - name: Remove WordPress installation file
+      file:
+        path: /var/www/html/wordpress/wp-admin/install.php
+        state: absent
 
-    - name: Restart Apache to apply changes
-      hosts: wordpress-instance
-      tasks:
-        - name: Restart Apache
-          service:
-            name: apache2
-            state: restarted
+- name: Restart Apache to apply changes
+  hosts: wordpress-instance
+  tasks:
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: restarted
