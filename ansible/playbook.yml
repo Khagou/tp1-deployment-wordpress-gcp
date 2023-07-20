@@ -4,6 +4,27 @@
   hosts: wordpress-instance
   gather_facts: false
   become: true
+    vars:
+  # Version de WordPress à installer (vous pouvez changer cela en fonction de votre préférence)
+  wordpress_version: "5.8"
+  # Adresse du site WordPress
+  wordpress_site_url: "votre_domaine.com"
+  # Titre du site WordPress
+  wordpress_site_title: "Votre Site WordPress"
+  # Nom d'utilisateur administrateur de WordPress
+  wordpress_admin_user: "admin"
+  # Mot de passe administrateur de WordPress
+  wordpress_admin_password: "admin_password"
+  # Adresse e-mail de l'administrateur de WordPress
+  wordpress_admin_email: "admin@example.com"
+  # Mot de passe root de MariaDB
+  mariadb_root_password: "mariadb_root_password"
+  # Nom de la base de données WordPress
+  wordpress_db_name: "wordpressdb"
+  # Nom d'utilisateur de la base de données WordPress
+  wordpress_db_user: "wordpressuser"
+  # Mot de passe de la base de données WordPress
+  wordpress_db_password: "wordpresspassword"
 
   tasks:
     # Tâches pour wordpress
@@ -11,6 +32,7 @@
       apt:
         update_cache: yes
       become: true
+
     - name: Install required packages for WordPress
       apt:
         name: "{{ item }}"
@@ -23,14 +45,31 @@
         - libapache2-mod-php
         - default-mysql-client
 
-    # ... autres tâches pour WordPress ...
-    - name: Configure WordPress to use MariaDB on mariadb
-      lineinfile:
-        path: /var/www/html/wp-config.php
-        regex: "define\\('DB_HOST', '[^']*'\\);"
-        line: "define('DB_HOST', 'ip-instance-2');"
-        state: present
-      become: true
+    - name: Download and extract WordPress
+      get_url:
+        url: "https://wordpress.org/wordpress-{{ wordpress_version }}.tar.gz"
+        dest: /tmp/wordpress.tar.gz
+
+    - name: Extract WordPress archive
+      unarchive:
+        src: /tmp/wordpress.tar.gz
+        dest: /var/www/html
+        remote_src: yes
+        creates: /var/www/html/wordpress
+
+    - name: Set ownership and permissions for WordPress
+      file:
+        path: /var/www/html/wordpress
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: '0755'
+
+
+    - name: Copy WordPress configuration file
+      template:
+        src: wp-config.php.j2
+        dest: /var/www/html/wordpress/wp-config.php
 
   handlers:
     # Handlers pour instance-1 (WordPress)
@@ -58,12 +97,64 @@
         state: present
       become: true
 
-    # ... autres tâches pour MariaDB ...
+    - name: Secure MariaDB installation (optional, you can remove this task if you don't need it)
+      mysql_user:
+        name: root
+        password: "{{ mariadb_root_password }}"
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+        host_all: yes
 
-  handlers:
-    # Handlers pour instance-2 (MariaDB)
-    - name: Restart MariaDB
-      service:
-        name: mysql
-        state: restarted
-      become: true
+    - name: Create MySQL database for WordPress
+      mysql_db:
+        name: "{{ wordpress_db_name }}"
+        state: present
+        login_user: root
+        login_password: "{{ mariadb_root_password }}"
+
+    - name: Create MySQL user for WordPress
+      mysql_user:
+        name: "{{ wordpress_db_user }}"
+        password: "{{ wordpress_db_password }}"
+        priv: "{{ wordpress_db_name }}.*:ALL"
+        state: present
+        login_user: root
+        login_password: "{{ mariadb_root_password }}"
+
+    - name: Flush MySQL privileges
+      mysql_user:
+        name: ""
+        password: ""
+        priv: "*.*:USAGE"
+        state: present
+        login_user: root
+        login_password: "{{ mariadb_root_password }}"
+
+    - name: Configure WordPress with MariaDB details
+      hosts: wordpress_instance_ip
+      tasks:
+        - name: Install MySQL client package on WordPress instance (required for wp-cli)
+          apt:
+            name: mysql-client
+            state: present
+
+        - name: Install WordPress CLI for command-line management
+          shell: curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x wp-cli.phar && sudo mv wp-cli.phar /usr/local/bin/wp
+
+        - name: Configure WordPress to use MariaDB
+          shell: wp core config --path=/var/www/html/wordpress --dbname={{ wordpress_db_name }} --dbuser={{ wordpress_db_user }} --dbpass={{ wordpress_db_password }} --dbhost={{ mariadb_instance_ip }} --dbprefix=wp_ --skip-check
+
+        - name: Install and configure WordPress
+          shell: wp core install --path=/var/www/html/wordpress --url={{ wordpress_site_url }} --title="{{ wordpress_site_title }}" --admin_user={{ wordpress_admin_user }} --admin_password="{{ wordpress_admin_password }}" --admin_email={{ wordpress_admin_email }} --skip-email
+
+        - name: Remove WordPress installation file
+          file:
+            path: /var/www/html/wordpress/wp-admin/install.php
+            state: absent
+
+    - name: Restart Apache to apply changes
+      hosts: wordpress_instance_ip
+      tasks:
+        - name: Restart Apache
+          service:
+            name: apache2
+            state: restarted

@@ -5,9 +5,6 @@ provider "google" {
   scopes      = [ "https://www.googleapis.com/auth/cloud-platform" ]
 }
 
-# data "google_client_openid_userinfo" "me" {
-# }
-
 resource "google_compute_network" "my_network" {
   name                    = "my-network"
   auto_create_subnetworks = false
