@@ -7,16 +7,12 @@
   vars:
     # Version de WordPress à installer (vous pouvez changer cela en fonction de votre préférence)
     wordpress_version: "5.8"
-    # Adresse du site WordPress
-    # wordpress_site_url: "votre_domaine.com"
     # Titre du site WordPress
     wordpress_site_title: "Votre Site WordPress"
     # Nom d'utilisateur administrateur de WordPress
     wordpress_admin_user: "admin"
     # Mot de passe administrateur de WordPress
     wordpress_admin_password: "admin_password"
-    # Adresse e-mail de l'administrateur de WordPress
-    # wordpress_admin_email: "admin@example.com"
     # Mot de passe root de MariaDB
     mariadb_root_password: "mariadb_root_password"
     # Nom de la base de données WordPress
@@ -65,10 +61,10 @@
         group: www-data
         mode: "0755"
 
-    # - name: Copy WordPress configuration file
-    #   template:
-    #     src: wp-config.php.j2
-    #     dest: /var/www/html/wordpress/wp-config.php
+    - name: Copy WordPress configuration file
+      template:
+        src: wp-config.php
+        dest: /var/www/html/wordpress/wp-config.php
 
   handlers:
     # Handlers pour instance-1 (WordPress)
