@@ -1,5 +1,5 @@
 #!/bin/bash
-export USER=khagukhagu2 #Remplacer par votre user name
+export USER=$(gcloud config get-value account --format="value(core.account)" #Remplacer par votre user name
 # 4- Vérifier si une clé SSH est présente sur la VM, sinon en créer une
 if [ ! -f ~/.ssh/id_rsa ]; then
     ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa -C "$USER"
