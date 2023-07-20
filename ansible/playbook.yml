@@ -64,7 +64,7 @@
     - name: Copy WordPress configuration file
       template:
         src: wp_config.php
-        dest: /var/www/html/wordpress/wp-config.php
+        dest: /var/www/html/wordpress/wp_config.php
 
   handlers:
     # Handlers pour instance-1 (WordPress)
