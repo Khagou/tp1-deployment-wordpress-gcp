@@ -1,3 +1,6 @@
+variable "gcp_project" {
+  description = "The GCP project to deploy the runner into."
+}
 variable "account_id" {
   description = "Service account id."
 }
