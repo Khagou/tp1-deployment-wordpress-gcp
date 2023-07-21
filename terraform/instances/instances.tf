@@ -36,7 +36,7 @@ resource "google_compute_instance" "wordpress_instance" {
 
 
   service_account {
-    email  = google_service_account.service_account.email
+    email  = module.service_account.google_service_account.service_account.email
     scopes = ["cloud-platform"]
   }
 
@@ -62,7 +62,7 @@ resource "google_compute_instance" "mariadb_instance" {
 
 
   service_account {
-    email  = google_service_account.service_account.email
+    email  = module.service_account.google_service_account.service_account.email
     scopes = ["cloud-platform"]
   }
 
