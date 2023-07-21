@@ -141,6 +141,6 @@
         # Handlers pour instance-1 (WordPress)
         - name: Restart mariadb
           service:
-            name: maraidb
+            name: mariadb
             state: restarted
           become: true
