@@ -14,7 +14,7 @@ module "network" {
 
 module "firewall" {
   source           = "./firewall"
-  network_self_link = module.network.network_self_link
+  network_self_link = var.network_self_link
   subnet_cidr       = var.subnet_cidr
   # region            = var.gcp_region
 }
@@ -32,7 +32,7 @@ module "instances" {
   project_id           = var.gcp_project
   region               = var.gcp_region
   # zone                 = var.gcp_zone
-  network_self_link    = module.network.network_self_link
-  subnet_self_link     = module.network.subnet_self_link
-  service_account_email = google_service_account.service_account.email
+  network_self_link    = var.network_self_link
+  subnet_self_link     = var.subnet_self_link
+  service_account_email = var.service_account_email
 }
