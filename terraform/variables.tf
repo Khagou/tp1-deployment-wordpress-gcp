@@ -24,11 +24,6 @@ variable "gcp_region" {
 #   default = "google_compute_subnetwork.my_subnetwork.self_link"
 # }
 
-variable "subnet_cidr" {
-  description = "CIDR block for the subnetwork."
-  default = "10.0.0.0/24"
-}
-
 # variable "service_account_email" {
 #   description = "Service account email."
 #   default = google_service_account.service_account.email
