@@ -97,12 +97,12 @@
         - python3-setuptools
         - python3-pymysql
 
-    - name: Secure MariaDB installation (optional, you can remove this task if you don't need it)
-      mysql_user:
-        name: root
-        password: "{{ mariadb_root_password }}"
-        login_unix_socket: /var/run/mysqld/mysqld.sock
-        host_all: yes
+    # - name: Secure MariaDB installation (optional, you can remove this task if you don't need it)
+    #   mysql_user:
+    #     name: root
+    #     password: "{{ mariadb_root_password }}"
+    #     login_unix_socket: /var/run/mysqld/mysqld.sock
+    #     host_all: yes
 
     - name: Create MySQL database for WordPress
       mysql_db:
