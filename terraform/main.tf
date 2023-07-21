@@ -21,9 +21,6 @@ module "service_account" {
 module "instances" {
   depends_on = [ module.network ]
   source               = "./instances"
-  region               = var.gcp_region
-  zone                 = var.gcp_zone
-  network_self_link    = module.network.network_self_link
   subnet_self_link     = module.network.subnet_self_link
   service_account_email = module.service_account.service_account_email
 }
