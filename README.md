@@ -45,7 +45,7 @@ Disposer d'un compte GCP avec facturation, thats it :)
 5. [ ] Entrer dans le dossier téléchargé `cd tp1-deployment-wordpress-gcp`
 6. [ ] Modification des variables:
    - Dans cloud shell, cliquer le bouton ouvrir l'editeur
-   - accedez au dossier **terraform** et changez les variables du fichier _variables.tf_ en fonction de vos besoins.
+   - accedez au dossier **terraform** et changez les variables du fichier _variables.tf_ et changez la variable gcp_project, vous pouvez aussi changer les autres en fonction de vos besoins.
    - dans le scirpt **creation_cle_ssh.sh** modifier la variable user par votre nom d'utilisateur
    - dans le script **deploiement_cle_ssh.sh** modifier le nom du projet par l'id de votre projet
    - dans **test_deploiement.sh** modifier la zone si necessaire
