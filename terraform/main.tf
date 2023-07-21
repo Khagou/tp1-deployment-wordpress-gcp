@@ -56,7 +56,7 @@ resource "google_compute_firewall" "maraidb" {
     ports    = ["3306"]
   }
 
-  source_ranges = ["0.0.0.0/0"]
+  source_ranges = ["10.0.0.0/24"]
 }
 
 resource "google_compute_firewall" "allow-http-https" {
