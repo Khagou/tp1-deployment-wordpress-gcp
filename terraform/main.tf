@@ -47,6 +47,18 @@ resource "google_compute_firewall" "allow-ssh" {
   source_ranges = ["0.0.0.0/0"]
 }
 
+resource "google_compute_firewall" "maraidb" {
+  name    = "allow-mariadb"
+  network = google_compute_network.my_network.self_link
+
+  allow {
+    protocol = "tcp"
+    ports    = ["3306"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+}
+
 resource "google_compute_firewall" "allow-http-https" {
   name    = "allow-http-https"
   network = google_compute_network.my_network.self_link
