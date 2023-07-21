@@ -136,7 +136,7 @@
         line: "bind-address = wordpress-instance"
         backup: yes
       notify:
-        - Restart mysql
+        - Restart mariadb
   handlers:
     # Handlers pour instance-1 (WordPress)
     - name: Restart mariadb
