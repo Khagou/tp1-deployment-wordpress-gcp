@@ -51,10 +51,14 @@ fi
 ansible-playbook playbook.yml -i ./gcp_compute.yml
 
 # 10- Vérification que l'application fonctionne
-wordpress_ip=$(terraform output -raw wordpress_instance_ip)
-curl_result=$(curl -s "$wordpress_ip" | grep "Welcome to WordPress")
-if [[ -n $curl_result ]]; then
-    echo "L'application WordPress est fonctionnelle."
+
+url_to_check="$wordpress_ip/wordpress"  # Remplacez cette URL par l'URL que vous souhaitez vérifier
+
+# Effectuer une requête GET à l'URL spécifiée et stocker le code de statut dans une variable
+status_code=$(curl -s -o /dev/null -w "%{http_code}" $url_to_check)
+
+if [ $status_code -eq 200 ]; then
+  echo "La page $url_to_check renvoie le code 200."
 else
-    echo "L'application WordPress n'est pas fonctionnelle."
+  echo "La page $url_to_check ne renvoie pas le code 200. Code : $status_code"
 fi
