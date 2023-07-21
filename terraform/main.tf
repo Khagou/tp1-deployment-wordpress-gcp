@@ -23,7 +23,7 @@ module "service_account" {
 }
 
 module "instances" {
-  depends_on = [ module.network, module.service_account ]
+  depends_on = [ module.service_account ]
   source               = "./instances"
   project_id           = var.gcp_project
   region               = var.gcp_region
