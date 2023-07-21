@@ -47,7 +47,7 @@ resource "google_compute_firewall" "allow-ssh" {
   source_ranges = ["0.0.0.0/0"]
 }
 
-resource "google_compute_firewall" "maraidb" {
+resource "google_compute_firewall" "mariadb" {
   name    = "allow-mariadb"
   network = google_compute_network.my_network.self_link
 
