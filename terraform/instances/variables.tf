@@ -23,14 +23,7 @@ variable "network_self_link" {
 variable "subnet_self_link" {
   description = "Self link of the Google Cloud subnetwork."
 }
-variable "account_id" {
-  description = "Service account id."
-  default = "terraform"
-}
-variable "display_name" {
-  description = "Service account name."
-  default = "terraform"
-}
+
 variable "key_filename" {
   description = "Chemin et nom de la cle."
   default = "../ansible/service_account.json"

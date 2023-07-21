@@ -15,18 +15,18 @@ module "network" {
 module "firewall" {
   source           = "./firewall"
   network_self_link = module.network.network_self_link
-  # subnet_cidr       = var.subnet_cidr
-  # region            = var.gcp_region
+}
+module "service_account" {
+  source      = "./service_account"
+  project = var.gcp_project
 }
 
-
 module "instances" {
-  depends_on = [ module.network ]
+  depends_on = [ module.network, module.service_account ]
   source               = "./instances"
   project_id           = var.gcp_project
   region               = var.gcp_region
-  # zone                 = var.gcp_zone
   network_self_link    = module.network.network_self_link
   subnet_self_link     = module.network.subnet_self_link
-  # service_account_email = module.service_account.members
+  service_account_email = module.service_account.service_account_email
 }
