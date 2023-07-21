@@ -18,6 +18,15 @@ module "firewall" {
   subnet_cidr       = var.subnet_cidr
   # region            = var.gcp_region
 }
+module "service_account" {
+  source = "./service_account"
+  account_id = "terraform"
+  display_name = "terraform"
+  service_account_id = google_service_account.service_account.name
+  public_key_type = "TYPE_X509_PEM_FILE"
+  content  = base64decode(google_service_account_key.service_account.private_key)
+  filename = "../ansible/service_account.json"
+}
 
 module "instances" {
   source               = "./instances"
