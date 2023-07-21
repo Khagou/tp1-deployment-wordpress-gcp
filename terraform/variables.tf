@@ -33,4 +33,3 @@ variable "service_account_email" {
   description = "Service account email."
   default = google_service_account.service_account.email
 }
-google_compute_subnetwork.my_subnetwork.self_link
