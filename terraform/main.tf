@@ -18,7 +18,6 @@ module "firewall" {
 }
 module "service_account" {
   source      = "./service_account"
-  project = var.gcp_project
 }
 
 module "instances" {
