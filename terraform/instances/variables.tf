@@ -28,3 +28,7 @@ variable "key_filename" {
   description = "Chemin et nom de la cle."
   default = "../ansible/service_account.json"
 }
+
+variable "service_account_email" {
+  description = "email du compte de service"
+}
