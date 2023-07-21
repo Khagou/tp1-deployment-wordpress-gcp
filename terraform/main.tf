@@ -16,7 +16,7 @@ module "firewall" {
 }
 module "service_account" {
   source      = "./service_account"
-  project = var.gcp_project
+  project_id = var.gcp_project
 }
 
 module "instances" {
@@ -24,6 +24,7 @@ module "instances" {
   source               = "./instances"
   project_id           = var.gcp_project
   region               = var.gcp_region
+  zone                 = var.gcp_zone
   network_self_link    = module.network.network_self_link
   subnet_self_link     = module.network.subnet_self_link
   service_account_email = module.service_account.service_account_email
