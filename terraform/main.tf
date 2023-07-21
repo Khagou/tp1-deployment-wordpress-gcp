@@ -13,10 +13,12 @@ module "network" {
 }
 
 module "firewall" {
+  depends_on = [ module.network ]
   source           = "./firewall"
   network_self_link = module.network.network_self_link
 }
 module "service_account" {
+  depends_on = [ module.instances ]
   source      = "./service_account"
 }
 
