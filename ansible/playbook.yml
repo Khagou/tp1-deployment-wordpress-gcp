@@ -137,7 +137,7 @@
         backup: yes
       notify:
         - Restart mysql
-    - handlers:
+    handlers:
         # Handlers pour instance-1 (WordPress)
         - name: Restart mariadb
           service:
