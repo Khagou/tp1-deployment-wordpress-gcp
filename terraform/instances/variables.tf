@@ -1,9 +1,11 @@
 variable "project_id" {
+  type        = string
   description = "Google Cloud project ID."
   default     = "tp1-wordpress-mariadb"
 }
 
 variable "region" {
+  type        = string
   description = "Google Cloud region."
   default     = "us-east1"
 }

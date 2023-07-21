@@ -34,9 +34,7 @@ resource "google_compute_instance" "wordpress_instance" {
   zone         = var.gcp_zone
   tags         = ["wordpress", "ansible"]
 
-  metadata = {
-    # enable-oslogin = "TRUE"
-  }
+
   service_account {
     email  = var.service_account_email
     scopes = ["cloud-platform"]
@@ -62,10 +60,7 @@ resource "google_compute_instance" "mariadb_instance" {
   zone         = var.gcp_zone
   tags         = ["mariadb", "ansible"]
 
-  metadata = {
-    # enable-oslogin = "TRUE"
-    enable-windows-ssh = "TRUE"
-  }
+
   service_account {
     email  = var.service_account_email
     scopes = ["cloud-platform"]
