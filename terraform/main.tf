@@ -19,14 +19,14 @@ module "firewall" {
   # region            = var.gcp_region
 }
 module "service_account" {
-  source = "./service_account"
-  account_id = "terraform"
-  display_name = "terraform"
-  service_account_id = google_service_account.service_account.name
-  public_key_type = "TYPE_X509_PEM_FILE"
-  content  = base64decode(google_service_account_key.service_account.private_key)
-  filename = "../ansible/service_account.json"
+  source        = "./service_account"
+  project_id    = var.gcp_project
+  region        = var.gcp_region
+  account_id    = "terraform"           # Change this to the desired account ID
+  display_name  = "terraform"           # Change this to the desired display name
+  key_filename  = "../ansible/service_account.json"
 }
+
 
 module "instances" {
   source               = "./instances"
