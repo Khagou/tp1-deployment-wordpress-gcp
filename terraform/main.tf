@@ -8,8 +8,6 @@ provider "google" {
 
 module "network" {
   source       = "./network"
-  project_id   = var.gcp_project
-  region       = var.gcp_region
 }
 
 module "firewall" {
@@ -17,8 +15,8 @@ module "firewall" {
   network_self_link = module.network.network_self_link
 }
 module "service_account" {
-  # depends_on = [ module.instances ]
   source      = "./service_account"
+  project = var.gcp_project
 }
 
 module "instances" {

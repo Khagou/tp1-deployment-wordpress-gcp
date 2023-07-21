@@ -7,12 +7,12 @@ variable "display_name" {
   description = "Service account name."
   default = "terraform"
 }
-variable "gcp_project" {
-  description = "Google Cloud project ID."
-  default     = "tp1-wordpress-mariadb"
-}
 
 variable "key_filename" {
-  description = "Chemin et nom de la cle."
+  description = "How to deploy the key and how to name it."
   default = "../ansible/service_account.json"
+}
+
+variable "gcp_project" {
+  description = "The GCP project to deploy the runner into"
 }
