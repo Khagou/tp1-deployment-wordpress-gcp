@@ -1,4 +1,10 @@
 # main.tf
+provider "google" {
+  project     = var.gcp_project
+  region      = var.gcp_region
+  zone        = var.gcp_zone
+  scopes      = [ "https://www.googleapis.com/auth/cloud-platform" ]
+}
 
 module "network" {
   source       = "./network/network.tf"
