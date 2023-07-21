@@ -133,7 +133,7 @@
       fileinline:
         path: /etc/mysql/mqriqdb.conf.d/50-server.cnf
         regexp: "^bind-address"
-        line: "bind-address = 0.0.0.0"
+        line: "bind-address = mariadb-instance"
         backup: yes
       notify:
         - Restart mysql
