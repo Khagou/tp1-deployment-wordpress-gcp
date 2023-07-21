@@ -7,20 +7,20 @@ provider "google" {
 }
 
 module "network" {
-  source       = "./network/network.tf"
+  source       = "./network"
   project_id   = var.gcp_project
   region       = var.gcp_region
 }
 
 module "firewall" {
-  source           = "./firewall/firewall.tf"
+  source           = "./firewall"
   network_self_link = module.network.network_self_link
   subnet_cidr       = var.subnet_cidr
   region            = var.gcp_region
 }
 
 module "instances" {
-  source               = "./instances/instances.tf"
+  source               = "./instances"
   project_id           = var.gcp_project
   region               = var.gcp_region
   zone                 = var.gcp_zone
