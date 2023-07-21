@@ -137,6 +137,7 @@ resource "google_compute_instance" "wordpress-instance" {
   }
 
   network_interface {
+    network = google_compute_network.my_network
     subnetwork = google_compute_subnetwork.my_subnetwork.self_link
     access_config {
       // Autoriser l'accès par une adresse IP externe
@@ -166,6 +167,7 @@ resource "google_compute_instance" "mariadb-instance" {
   }
 
   network_interface {
+    network = google_compute_network.my_network
     subnetwork = google_compute_subnetwork.my_subnetwork.self_link
     access_config {
       // Autoriser l'accès par une adresse IP externe
