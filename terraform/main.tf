@@ -35,5 +35,4 @@ module "instances" {
   # zone                 = var.gcp_zone
   network_self_link    = var.network_self_link
   subnet_self_link     = var.subnet_self_link
-  service_account_email = var.service_account_email
 }
