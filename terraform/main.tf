@@ -14,8 +14,8 @@ module "network" {
 
 module "firewall" {
   source           = "./firewall"
-  network = module.network.network_self_link
-  subnet_cidr       = module.network.subnet_self_link
+  # network          = module.network.network_self_link
+  subnet_cidr       = var.subnet_cidr
   # region            = var.gcp_region
 }
 

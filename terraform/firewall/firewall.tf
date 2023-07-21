@@ -17,7 +17,7 @@
 
 resource "google_compute_firewall" "allow_internal_traffic" {
   name    = "allow-internal-traffic"
-
+  network = module.network.network_self_link
   allow {
     protocol = "icmp"
   }
@@ -35,6 +35,7 @@ resource "google_compute_firewall" "allow_internal_traffic" {
 
 resource "google_compute_firewall" "allow_ssh" {
   name    = "allow-ssh"
+  network = module.network.network_self_link
 
   allow {
     protocol = "tcp"
@@ -46,6 +47,7 @@ resource "google_compute_firewall" "allow_ssh" {
 
 resource "google_compute_firewall" "mariadb" {
   name    = "allow-mariadb"
+  network = module.network.network_self_link
 
   allow {
     protocol = "tcp"
@@ -57,6 +59,7 @@ resource "google_compute_firewall" "mariadb" {
 
 resource "google_compute_firewall" "allow_http_https" {
   name    = "allow-http-https"
+  network = module.network.network_self_link
 
   allow {
     protocol = "tcp"
