@@ -8,7 +8,7 @@ provider "google" {
 
 module "network" {
   source       = "./network"
-  ip_cidr_range = var.subnet_cidr
+  subnet_cidr = var.subnet_cidr
 }
 
 module "firewall" {
