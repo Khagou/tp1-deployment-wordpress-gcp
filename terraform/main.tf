@@ -167,6 +167,4 @@ output "ip-wordpress-instance" {
 output "ip-mariadb-instance" {
   value = google_compute_instance.mariadb-instance.network_interface.0.access_config.0.nat_ip
 }
-output "sa-email"{
-    value = google_service_account.service_account.email
-}
+
