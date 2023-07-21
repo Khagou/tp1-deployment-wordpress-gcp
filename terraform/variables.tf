@@ -15,10 +15,10 @@ variable "gcp_region" {
   description = "The GCP region to deploy the runner into."
 }
 
-# variable "network_self_link" {
-#   description = "Self link of the Google Cloud network."
-#   default = "google_compute_network.my_network.self_link"
-# }
+variable "network_self_link" {
+  description = "Self link of the Google Cloud network."
+  default = "google_compute_network.my_network.self_link"
+}
 # variable "subnet_self_link" {
 #   description = "Self link of the Google Cloud network."
 #   default = "google_compute_subnetwork.my_subnetwork.self_link"
