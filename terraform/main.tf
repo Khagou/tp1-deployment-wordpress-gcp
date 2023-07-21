@@ -18,17 +18,10 @@ module "firewall" {
   subnet_cidr       = var.subnet_cidr
   # region            = var.gcp_region
 }
-module "service_account" {
-  source        = "./service_account"
-  project_id    = var.gcp_project
-  account_id    = "terraform"           # Change this to the desired account ID
-  display_name  = "terraform"           # Change this to the desired display name
-  key_filename  = "../ansible/service_account.json"
-}
 
 
 module "instances" {
-  depends_on = [ module.network, module.service_account ]
+  depends_on = [ module.network ]
   source               = "./instances"
   project_id           = var.gcp_project
   region               = var.gcp_region
