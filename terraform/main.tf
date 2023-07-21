@@ -17,6 +17,7 @@ module "firewall" {
 }
 module "service_account" {
   source      = "./service_account"
+  gcp_project = var.gcp_project
   key_filename = var.key_filename
   account_id   = var.account_id
   display_name = var.display_name
