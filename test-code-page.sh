@@ -9,7 +9,7 @@ url_to_check="$wordpress_ip/wordpress"  # Remplacez cette URL par l'URL que vous
 status_code=$(curl -s -o /dev/null -w "%{http_code}" $url_to_check)
 
 if [ $status_code -eq 200 ] || [ $status_code -eq 301 ] || [ $status_code -eq 302 ]; then
-  echo "La page $url_to_check renvoie le code 200. Code : $status_code"
+  echo "L'application wordpress est fonctionnelle. Code : $status_code"
 else
-  echo "La page $url_to_check ne renvoie pas le code 200. Code : $status_code"
+  echo "L'application wordpress n'est pas fonctionnelle. Code : $status_code"
 fi
