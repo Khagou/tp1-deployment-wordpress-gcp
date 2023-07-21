@@ -51,6 +51,7 @@ fi
 ansible-playbook playbook.yml -i ./gcp_compute.yml
 
 # 10- Vérification que l'application fonctionne
+wordpress_ip=$(terraform output -raw wordpress_instance_ip)
 
 url_to_check="$wordpress_ip/wordpress"  # Remplacez cette URL par l'URL que vous souhaitez vérifier
 
