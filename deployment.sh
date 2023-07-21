@@ -52,7 +52,7 @@ ansible-playbook playbook.yml -i ./gcp_compute.yml
 
 # 10- Vérification que l'application fonctionne
 wordpress_ip=$(terraform output -raw wordpress_instance_ip)
-curl_result=$(curl -s "$wordpress_ip" | grep "WordPress Installation")
+curl_result=$(curl -s "$wordpress_ip" | grep "Welcome to WordPress")
 if [[ -n $curl_result ]]; then
     echo "L'application WordPress est fonctionnelle."
 else
