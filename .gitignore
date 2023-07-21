@@ -1,0 +1,5 @@
+#Ignorer le repertoire .vscode
+.vscode
+
+# Ignorer le pdf du TP
+tp_1_VM_WORDPRESS.pdf

@@ -36,9 +36,9 @@ terraform apply -auto-approve
 
 cd ..
 
-sh test_export_from_file.sh
+sh creation_cle_ssh.sh
 
-sh recolte-instances-names.sh
+sh deploiement_cle_ssh.sh
 
 # 9- Utiliser la commande de déploiement Ansible pour appliquer le déploiement sur les machines
 if [ ! -d "ansible" ]; then
@@ -52,4 +52,4 @@ ansible-playbook playbook.yml -i ./gcp_compute.yml
 
 # 10- Vérification que l'application fonctionne
 cd ..
-sh test-code-page.sh
+sh test_deploiement.sh
