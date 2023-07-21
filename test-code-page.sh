@@ -1,5 +1,5 @@
-export ZONE=us-east1-b # A modifier
-export WORDPRESS_INSTANCE=wordpress-instance # A modifier
+export ZONE=us-east1-b # Change me
+export WORDPRESS_INSTANCE=wordpress-instance # Change me
 
 wordpress_ip=$(gcloud compute instances describe $WORDPRESS_INSTANCE --zone $ZONE --format='get(networkInterfaces[0].accessConfigs[0].natIP)')
 

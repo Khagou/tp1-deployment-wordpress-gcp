@@ -1,9 +1,9 @@
 plugin: gcp_compute
 zones: # populate inventory with instances in these regions
-  - us-east1-b
+  - us-east1-b # Change me
 projects:
-  - tp1-wordpress-mariadb
-service_account_file: ./service_account.json
+  - tp1-wordpress-mariadb # Change me
+service_account_file: ./service_account.json # Change me
 auth_kind: serviceaccount
 keyed_groups:
   # Create groups from GCE labels
