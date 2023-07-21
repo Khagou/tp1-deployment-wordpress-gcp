@@ -4,8 +4,8 @@ resource "google_project_service" "iam" {
 }
 
 resource "google_service_account" "service_account" {
-  account_id   = var.account_id
-  display_name = var.display_name
+  # account_id   = var.account_id
+  # display_name = var.display_name
 }
 
 resource "google_service_account_key" "service_account" {
@@ -15,7 +15,7 @@ resource "google_service_account_key" "service_account" {
 
 resource "local_file" "service_account_key" {
   content  = base64decode(google_service_account_key.service_account.private_key)
-  filename = var.key_filename
+  # filename = var.key_filename
 }
 
 resource "google_project_iam_binding" "project" {

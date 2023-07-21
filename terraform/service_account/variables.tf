@@ -9,7 +9,3 @@ variable "display_name" {
 variable "key_filename" {
   description = "How to deploy the key and how to name it."
 }
-
-variable "gcp_project" {
-  description = "The GCP project to deploy the runner into"
-}
