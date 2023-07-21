@@ -31,7 +31,7 @@
 resource "google_compute_instance" "wordpress_instance" {
   name         = "wordpress-instance"
   machine_type = "e2-medium"
-  zone         = var.gcp_zone
+  # zone         = var.gcp_zone
   tags         = ["wordpress", "ansible"]
 
 
@@ -57,7 +57,7 @@ resource "google_compute_instance" "wordpress_instance" {
 resource "google_compute_instance" "mariadb_instance" {
   name         = "mariadb-instance"
   machine_type = "e2-medium"
-  zone         = var.gcp_zone
+  # zone         = var.gcp_zone
   tags         = ["mariadb", "ansible"]
 
 
