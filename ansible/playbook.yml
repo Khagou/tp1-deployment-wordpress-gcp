@@ -36,10 +36,10 @@
         remote_src: yes
         creates: /var/www/html/wordpress
 
-    - name: Copy WordPress configuration file
-      template:
-        src: wp-config.php.j2
-        dest: /var/www/html/wordpress/wp-config.php
+    # - name: Copy WordPress configuration file
+    #   template:
+    #     src: wp-config.php.j2
+    #     dest: /var/www/html/wordpress/wp-config.php
 
     - name: Set ownership and permissions for WordPress
       file:
@@ -113,6 +113,7 @@
         name: "{{ wordpress_db_user }}"
         password: "{{ wordpress_db_password }}"
         priv: "{{ wordpress_db_name }}.*:ALL"
+        host: "%"
         state: present
         login_user: root
         login_password: "{{ mariadb_root_password }}"
