@@ -17,7 +17,7 @@ module "firewall" {
 }
 module "service_account" {
   source      = "./service_account"
-  filename = var.key_filename
+  key_filename = var.key_filename
   account_id   = var.account_id
   display_name = var.display_name
 }
