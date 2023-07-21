@@ -16,13 +16,11 @@ module "firewall" {
 }
 module "service_account" {
   source      = "./service_account"
-  project_id = var.gcp_project
 }
 
 module "instances" {
   depends_on = [ module.network ]
   source               = "./instances"
-  project_id           = var.gcp_project
   region               = var.gcp_region
   zone                 = var.gcp_zone
   network_self_link    = module.network.network_self_link
