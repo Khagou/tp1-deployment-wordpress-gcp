@@ -21,7 +21,6 @@ module "firewall" {
 module "service_account" {
   source        = "./service_account"
   project_id    = var.gcp_project
-  region        = var.gcp_region
   account_id    = "terraform"           # Change this to the desired account ID
   display_name  = "terraform"           # Change this to the desired display name
   key_filename  = "../ansible/service_account.json"
