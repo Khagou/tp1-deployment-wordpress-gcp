@@ -30,7 +30,7 @@ resource "google_compute_firewall" "allow_internal_traffic" {
     protocol = "udp"
   }
 
-  source_ranges = ["10.0.0.0/24"]
+  source_ranges = [var.subnet_cidr]
 }
 
 resource "google_compute_firewall" "allow_ssh" {
@@ -54,7 +54,7 @@ resource "google_compute_firewall" "mariadb" {
     ports    = ["3306"]
   }
 
-  source_ranges = ["10.0.0.0/24"]
+  source_ranges = [var.subnet_cidr]
 }
 
 resource "google_compute_firewall" "allow_http_https" {
