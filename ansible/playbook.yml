@@ -130,17 +130,17 @@
         login_password: "{{ mariadb_root_password }}"
 
     - name: Enable connection
-      fileinline:
+      lineinfile:
         path: /etc/mysql/mqriqdb.conf.d/50-server.cnf
         regexp: "^bind-address"
         line: "bind-address = wordpress-instance"
         backup: yes
       notify:
         - Restart mysql
-    handlers:
-      # Handlers pour instance-1 (WordPress)
-      - name: Restart mariadb
-        service:
-          name: maraidb
-          state: restarted
-        become: true
+    - handlers:
+        # Handlers pour instance-1 (WordPress)
+        - name: Restart mariadb
+          service:
+            name: maraidb
+            state: restarted
+          become: true
