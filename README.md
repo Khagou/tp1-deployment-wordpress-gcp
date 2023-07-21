@@ -43,7 +43,7 @@ Disposer d'un compte GCP avec facturation, thats it :)
 3. [ ] Ouvrir Cloud SHell
 4. [ ] Cloner l'ensemble du repot `git clone https://github.com/tp1-deployment-wordpress-gcp.git`
 5. [ ] Entrer dans le dossier téléchargé `cd tp1-deployment-wordpress-gcp`
-6. [ ] Modification des variables
+6. [ ] Modification des variables:
    - Dans cloud shell, cliquer le bouton ouvrir l'editeur
    - accedez au dossier **terraform** et changez les variables du fichier _variables.tf_ en fonction de vos besoins.
    - dans le scirpt **creation_cle_ssh.sh** modifier la variable user par votre nom d'utilisateur
