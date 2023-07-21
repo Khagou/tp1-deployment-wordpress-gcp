@@ -29,7 +29,3 @@ variable "subnet_cidr" {
   default = "10.0.0.0/24"
 }
 
-variable "service_account_email" {
-  description = "Service account email."
-  default = google_service_account.service_account.email
-}
