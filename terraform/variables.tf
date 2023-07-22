@@ -1,6 +1,6 @@
 variable "gcp_project" {
   type        = string
-  default     = "tp1-wordpress-mariadb" # Change me
+  default     = "test-final3" # Change me
   description = "The GCP project to deploy the runner into."
 }
 variable "gcp_zone" {

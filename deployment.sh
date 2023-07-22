@@ -1,5 +1,5 @@
 #!/bin/bash
-export PROJET=test-final-393611 # Change me
+export PROJET=test-final3 # Change me
 
 gcloud config set project $PROJET
 
