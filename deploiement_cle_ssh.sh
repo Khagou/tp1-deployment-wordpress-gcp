@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Remplacez "VOTRE_PROJET" par l'ID de votre projet GCP
-PROJET="test-final3" # Change me
+PROJET="test-retry" # Change me
 
 # Récupère la liste des noms et des zones d'instance à l'aide de gcloud
 instances_info=$(gcloud compute instances list --project $PROJET --format="csv(NAME,ZONE)")

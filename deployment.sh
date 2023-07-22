@@ -1,5 +1,5 @@
 #!/bin/bash
-export PROJET=test-final3 # Change me
+export PROJET=test-retry # Change me
 
 gcloud config set project $PROJET
 

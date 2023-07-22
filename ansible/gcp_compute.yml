@@ -2,7 +2,7 @@ plugin: gcp_compute
 zones: # populate inventory with instances in these regions
   - us-east1-b # Change me
 projects:
-  - test-final3 # Change me
+  - test-retry # Change me
 service_account_file: ./service_account.json # Change me
 auth_kind: serviceaccount
 keyed_groups:

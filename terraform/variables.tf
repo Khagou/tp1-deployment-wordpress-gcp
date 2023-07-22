@@ -1,6 +1,6 @@
 variable "gcp_project" {
   type        = string
-  default     = "test-final3" # Change me
+  default     = "test-retry" # Change me
   description = "The GCP project to deploy the runner into."
 }
 variable "gcp_zone" {
