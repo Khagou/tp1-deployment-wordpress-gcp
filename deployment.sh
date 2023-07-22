@@ -24,7 +24,7 @@ gcloud services enable cloudresourcemanager.googleapis.com --project=$projet
 gcloud services enable iam.googleapis.com --project=$projet
 # 7- Vérification de la présence des fichiers Terraform et exécution de terraform init si nécessaire
 if [ ! -d "terraform" ]; then
-    git clone https://github.com/Khagou/tp1-deployment-wordpress-gcp.git
+    git clone https://github.com/khagou/tp1-deployment-wordpress-gcp.git
     cd tp1-deployment-wordpress-gcp/terraform
 else
     cd terraform
@@ -42,7 +42,7 @@ sh deploiement_cle_ssh.sh
 
 # 9- Utiliser la commande de déploiement Ansible pour appliquer le déploiement sur les machines
 if [ ! -d "ansible" ]; then
-    git clone https://github.com/tp1-deployment-wordpress-gcp.git
+    git clone https://github.com/khagou/tp1-deployment-wordpress-gcp.git
     cd tp1-deployment-wordpress-gcp/ansible
 else
     cd ansible
