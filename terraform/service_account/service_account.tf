@@ -1,7 +1,4 @@
-# resource "google_project_service" "iam" {
-#   project = var.gcp_project
-#   service = "iam.googleapis.com"
-# }
+# service_account/service_account.tf
 
 resource "google_service_account" "service_account" {
   account_id   = var.account_id
@@ -26,23 +23,3 @@ resource "google_project_iam_binding" "project" {
     "serviceAccount:${google_service_account.service_account.email}",
   ]
 }
-
-# resource "google_project_iam_binding" "oslogin" {
-#   project = var.gcp_project
-#   role    = "roles/compute.osLogin"
-
-#   members = [
-#     "serviceAccount:${google_service_account.service_account.email}",
-#   ]
-# }
-
-# resource "google_project_iam_binding" "instanceAdmin" {
-#   project = var.gcp_project
-#   role    = "roles/compute.instanceAdmin.v1"
-
-#   members = [
-#     "serviceAccount:${google_service_account.service_account.email}",
-#   ]
-# }
-
-

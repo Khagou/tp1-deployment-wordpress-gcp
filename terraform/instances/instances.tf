@@ -1,6 +1,5 @@
 # instances/instances.tf
 
-
 resource "google_compute_instance" "wordpress_instance" {
   name         = var.wordpress
   machine_type = var.machine
