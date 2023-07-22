@@ -45,14 +45,6 @@
         group: www-data
         mode: "0755"
 
-  # handlers:
-  #   # Handlers pour instance-1 (WordPress)
-  #   - name: Restart Apache
-  #     service:
-  #       name: apache2
-  #       state: restarted
-  #     become: true
-
 - name: Install and configure MariaDB on instance-2
   hosts: mariadb-instance
   gather_facts: false
