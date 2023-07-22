@@ -2,8 +2,8 @@
 
 
 resource "google_compute_instance" "wordpress_instance" {
-  name         = "wordpress-instance"
-  machine_type = "e2-medium"
+  name         = var.wordpress
+  machine_type = var.machine
   tags         = ["wordpress", "ansible"]
 
 
@@ -27,8 +27,8 @@ resource "google_compute_instance" "wordpress_instance" {
 }
 
 resource "google_compute_instance" "mariadb_instance" {
-  name         = "mariadb-instance"
-  machine_type = "e2-medium"
+  name         = var.mariadb
+  machine_type = var.machine
   tags         = ["mariadb", "ansible"]
 
 

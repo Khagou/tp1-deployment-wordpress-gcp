@@ -15,6 +15,20 @@ variable "gcp_region" {
   description = "The GCP region to deploy the runner into."
 }
 
+variable "wordpress" {
+  description = "Wordpress instance name"
+  default = "wordpress-instance"
+}
+
+variable "maraidb" {
+  description = "Mariadb instance name"
+  default = "mariadb-instance"
+}
+variable "machine" {
+  description = "Machine type"
+  default = "mariadb-instance"
+}
+
 variable "account_id" {
   description = "Service account id."
   default = "terraform" # Change me if you need
@@ -32,5 +46,9 @@ variable "key_filename" {
 
 variable "subnet_cidr" {
   description = "CIDR block for the subnetwork."
-  default = "10.0.0.0/24" # Change me if you need
+  default = "10.0.0.0/24"
+}
+variable "firewall_source" {
+  description = "source block for the firewall."
+  default = ["10.0.0.0/24"] # Change me if you need
 }

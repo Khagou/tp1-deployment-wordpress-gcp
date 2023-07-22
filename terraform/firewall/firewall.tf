@@ -1,20 +1,5 @@
 # firewall/firewall.tf
 
-# variable "network_self_link" {
-#   description = "Self link of the Google Cloud network."
-# }
-
-# variable "gcp_region" {
-#   type        = string
-#   default     = "us-east1"
-#   description = "The GCP region to deploy the runner into."
-# }
-
-# variable "subnet_cidr" {
-#   description = "CIDR block for the subnetwork."
-#   default = "10.0.0.0/24"
-# }
-
 resource "google_compute_firewall" "allow_internal_traffic" {
   name    = "allow-internal-traffic"
   network = var.network_self_link
@@ -30,7 +15,7 @@ resource "google_compute_firewall" "allow_internal_traffic" {
     protocol = "udp"
   }
 
-  source_ranges = ["10.0.0.0/24"]
+  source_ranges = var.firewall_source
 }
 
 resource "google_compute_firewall" "allow_ssh" {
@@ -54,7 +39,7 @@ resource "google_compute_firewall" "mariadb" {
     ports    = ["3306"]
   }
 
-  source_ranges = ["10.0.0.0/24"]
+  source_ranges = var.firewall_source
 }
 
 resource "google_compute_firewall" "allow_http_https" {

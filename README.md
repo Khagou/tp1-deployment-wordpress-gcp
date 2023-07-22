@@ -2,35 +2,20 @@
 
 ## Composition du repot
 
+L'ensemble du repot permet le deploiement de Wordpress et de MariaDB sur GCP, l'ensemble du déploiement repose sur des instances tournant sous debian-11, si vous souhaitez utiliser un autre OS vous pourriez donc avoir besoin de procéder à des modifications dont on ne parlera pas ici.
+
 Le repot est composé de 2 dossier et 4 scripts shell:
 
 - Le dossier **ansible** est lui meme compose de :
   - un fichier de config (ansible.cfg)
   - un fichier gcp_compute.yml qui est l'inventaire dynamique ansible a l'aide du plugin gcp_compute
   - un playbook qui install Wordpress et MariaDB ainsi que les dependances necessaire et qui parametre le tout
+  - un fichier myvarsfile.yml composé de l'ensemble des variables pour les id de connexion de MariaDB
 - Le dossier **Terraform** est decoupe en sous dossier, chaque dossier representant un module terraform (Network, Instances, Firewall, Compte de service), ainsi que des fichiers main et variables principaux.
 - Le script **creation_cle_ssh.sh** sert comme son nom l'indique a creer les cles SSH necessaire a la connexion de Ansible aux VM.
 - Le script **deploiement_cle_ssh.sh** sert quant a lui au deploiement des cles SSH dans les metadata des VM.
 - Le script **test_deploiement.sh** est lancer tout a la fin du deploiement afin de verifier que l'ensemble du deploiement s'est bien deroulé et que wordpress est bien accessible.
 - Pour finir le scirpt **deployment.sh** est le script qui s'occupe pour vous de lancer l'ensemble de deploiement c'est l'ami des fans de cafe.
-
-## Prerequis
-
-Disposer d'un compte GCP avec facturation, thats it :)
-
-## Deroulement du deploiement
-
-Le repot est composé de 2 dossier et 4 scripts shell:
-
-- Le dossier **ansible** est lui meme compose de :
-  - un fichier de config (ansible.cfg)
-  - un fichier gcp_compute.yml qui est l'inventaire dynamique ansible a l'aide du plugin gcp_compute
-  - un playbook qui install Wordpress et MariaDB ainsi que les dependances necessaire et qui parametre le tout
-- Le dossier **Terraform** est decoupe en sous dossier, chaque dossier representant un module terraform (Network, Instances, Firewall, Compte de service), ainsi que des fichiers main et variables principaux.
-- Le script **creation_cle_ssh.sh** sert comme son nom l'indique a creer les cles SSH necessaire a la connexion de Ansible aux VM.
-- Le script **deploiement_cle_ssh.sh** sert quant a lui au deploiement des cles SSH dans les metadata des VM.
-- Le script **test_deploiement.sh** est lancer tout a la fin du deploiement afin de verifier que l'ensemble du deploiement s'est bien deroulé et que wordpress est bien accessible.
-- Pour finir le scirpt **deployment.sh** est le script qui s'occupe de tout (installation de terraform, ansible, applique la config de terraform et joue le playbook ansible), c'est l'ami des fans de cafe.
 
 ## Prerequis
 
