@@ -21,6 +21,7 @@
         - apache2
         - php
         - php-mysql
+        - php-mysqli
         - libapache2-mod-php
         - mariadb-client
 
