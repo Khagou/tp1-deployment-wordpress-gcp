@@ -1,4 +1,4 @@
-my_var:  
+my_var:
   # Nom d'utilisateur administrateur de WordPress
   wordpress_admin_user: "admin" # Change me
   # Mot de passe administrateur de WordPress

@@ -57,7 +57,7 @@
   gather_facts: false
   become: true
 
-  vars_files: -myvarsfile.yml
+  vars_files: myvarsfile.yml
 
   tasks:
     # Tâches pour instance-2 (MariaDB)
