@@ -1,7 +1,8 @@
 #!/bin/bash
-export PROJET="test-final-393611" # Change me
+export PROJET=test-final-393611 # Change me
 
 gcloud config set project $PROJET
+
 # 5- Vérifier et installer Terraform si nécessaire
 if ! command -v terraform &> /dev/null; then
     sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
