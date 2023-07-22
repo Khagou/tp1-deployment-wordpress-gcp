@@ -41,14 +41,16 @@ Disposer d'un compte GCP avec facturation, thats it :)
 1. [ ] Creer un projet GCP
 2. [ ] Acceder au projet GCP
 3. [ ] Ouvrir Cloud SHell
-4. [ ] Cloner l'ensemble du repot `git clone https://github.com/tp1-deployment-wordpress-gcp.git`
+4. [ ] Cloner l'ensemble du repot `git clone https://github.com/khagou/tp1-deployment-wordpress-gcp.git`
 5. [ ] Entrer dans le dossier téléchargé `cd tp1-deployment-wordpress-gcp`
 6. [ ] Modification des variables:
    - Dans cloud shell, cliquer le bouton ouvrir l'editeur
    - accedez au dossier **terraform** et changez les variables du fichier _variables.tf_ et changez la variable gcp_project, vous pouvez aussi changer les autres en fonction de vos besoins.
+   - accedez ensuite au dossier _ansible_ et ouvrez le **playbook.yml** puis descendez a la ligne _60_ pour acceder au variable et changez l'ensemble des variables
    - dans le scirpt **creation_cle_ssh.sh** modifier la variable user par votre nom d'utilisateur
    - dans le script **deploiement_cle_ssh.sh** modifier le nom du projet par l'id de votre projet
+   - dans le script **deployment.sh** modifier la variable projet par votre id de projet
    - dans **test_deploiement.sh** modifier la zone si necessaire
-7. [ ] Lancer le script de deploiement `sh deployment.sh`
+7. [ ] Retourner dans cloud shell et lancer le script de deploiement `sh deployment.sh`
 8. [ ] Aller chercher un café et trouver un bon collegue pour patienter :)
 9. [ ] Quand l'installation est fini vous pouvez acceder au lien **_< ip-instance-wordpress >/wordpress_**

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+export PROJET="test-final-393611" # Change me
 # 5- Vérifier et installer Terraform si nécessaire
 if ! command -v terraform &> /dev/null; then
     sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
@@ -19,9 +19,9 @@ if ! command -v ansible &> /dev/null; then
     sudo apt install -y ansible
 fi
 
-gcloud services enable compute.googleapis.com --project="tp1-wordpress-mariadb"
-gcloud services enable cloudresourcemanager.googleapis.com --project="tp1-wordpress-mariadb"
-gcloud services enable iam.googleapis.com --project="tp1-wordpress-mariadb"
+gcloud services enable compute.googleapis.com --project=$projet
+gcloud services enable cloudresourcemanager.googleapis.com --project=$projet
+gcloud services enable iam.googleapis.com --project=$projet
 # 7- Vérification de la présence des fichiers Terraform et exécution de terraform init si nécessaire
 if [ ! -d "terraform" ]; then
     git clone https://github.com/Khagou/tp1-deployment-wordpress-gcp.git
