@@ -14,6 +14,7 @@ module "network" {
 module "firewall" {
   source           = "./firewall"
   network_self_link = module.network.network_self_link
+  firewall_source = var.firewall_source
 }
 module "service_account" {
   source      = "./service_account"
