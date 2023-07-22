@@ -57,19 +57,7 @@
   gather_facts: false
   become: true
 
-  vars:
-    # Nom d'utilisateur administrateur de WordPress
-    wordpress_admin_user: "admin" # Change me
-    # Mot de passe administrateur de WordPress
-    wordpress_admin_password: "admin_password" # Change me
-    # Mot de passe root de MariaDB
-    mariadb_root_password: "mariadb_root_password" # Change me
-    # Nom de la base de données WordPress
-    wordpress_db_name: "wordpressdb" # Change me
-    # Nom d'utilisateur de la base de données WordPress
-    wordpress_db_user: "wordpressuser" # Change me
-    # Mot de passe de la base de données WordPress
-    wordpress_db_password: "wordpresspassword" # Change me
+  vars_files: -myvarsfile.yml
 
   tasks:
     # Tâches pour instance-2 (MariaDB)
