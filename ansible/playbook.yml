@@ -57,10 +57,9 @@
   gather_facts: false
   become: true
 
-  vars_files: myvarsfile.yml
-
   tasks:
     # Tâches pour instance-2 (MariaDB)
+    - include_vars: myvarsfile.yml
     - name: Update apt cache
       apt:
         update_cache: yes
