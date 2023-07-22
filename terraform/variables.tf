@@ -26,7 +26,7 @@ variable "maraidb" {
 }
 variable "machine" {
   description = "Machine type"
-  default = "mariadb-instance"
+  default = "e2-medium"
 }
 
 variable "account_id" {
@@ -46,7 +46,7 @@ variable "key_filename" {
 
 variable "subnet_cidr" {
   description = "CIDR block for the subnetwork."
-  default = "10.0.0.0/24"
+  default = "10.0.0.0/24" # Change me if you need
 }
 variable "firewall_source" {
   description = "source block for the firewall."
