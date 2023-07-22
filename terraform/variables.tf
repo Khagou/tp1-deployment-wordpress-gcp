@@ -17,16 +17,16 @@ variable "gcp_region" {
 
 variable "wordpress" {
   description = "Wordpress instance name"
-  default = "wordpress-instance"
+  default = "wordpress-instance" # Change me if you need
 }
 
 variable "maraidb" {
   description = "Mariadb instance name"
-  default = "mariadb-instance"
+  default = "mariadb-instance" # Change me if you need
 }
 variable "machine" {
   description = "Machine type"
-  default = "e2-medium"
+  default = "e2-medium" # Change me if you need
 }
 
 variable "account_id" {
